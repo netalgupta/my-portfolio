@@ -112,9 +112,10 @@ export default function Projects() {
         date="Feb 2026 · AfterMath Hackathon · Team Lead"
         stack={['Next.js', 'TypeScript', 'Gemini API', 'SQLite', 'JWT', 'Web Speech API']}
         bullets={[
-          'LLM-based multilingual AI companion for Alzheimer\'s patients with memory-aware conversation',
+          'LLM-based multilingual 3d avatar AI companion for Alzheimer\'s patients with memory-aware conversations',
           '4–5s response latency on constrained deployment via prompt optimisation',
           'Real-time GPS emergency system + QR patient ID + caregiver alerts',
+          'Memory Room with Interactive Visuals & Brain-Training Games to Enhance Cognitive Skills',
           'Tri-role architecture: Patient · Caretaker · Guardian',
         ]}
         appLink="https://snack-alzheimer-1.onrender.com/"
@@ -133,9 +134,10 @@ export default function Projects() {
         date="Dec 2025 · GDG Hackathon"
         stack={['Firebase', 'Google Auth', 'Gemini API']}
         bullets={[
-          'LLM-based code evaluation — logic, edge cases, time complexity, best practices',
-          'AI chatbot for iterative learning via structured feedback loops',
-          'Real-time leaderboard with persistent session management',
+          'LLM-based code evaluation with <5s feedback latency — analyzing logic, edge cases, time/space complexity, and industry best practices',
+          'AI chatbot enabling 24/7 iterative learning with personalized hints and multi-step feedback loops',
+          '10+ code quality parameters visualized through an interactive radar heatmap — readability, efficiency, maintainability, correctness, and more',
+          'Line-by-line AI code explanation with 90%+ accurate logic breakdown, bug identification, and optimization recommendations',
         ]}
         appLink="https://cptracker-gdg.vercel.app/"
         ghLink="https://github.com/netalgupta/All-In_CodeEvaluator_GDG"
