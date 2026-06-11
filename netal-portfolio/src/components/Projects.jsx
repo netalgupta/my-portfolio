@@ -136,7 +136,7 @@ export default function Projects() {
         bullets={[
           'LLM-based code evaluation with <5s feedback latency — analyzing logic, edge cases, time/space complexity, and industry best practices',
           'AI chatbot enabling 24/7 iterative learning with personalized hints and multi-step feedback loops',
-          '10+ code quality parameters visualized through an interactive radar heatmap — readability, efficiency, maintainability, correctness, and more',
+          '4 code quality parameters visualized through an interactive radar heatmap — readability, efficiency, maintainability, correctness',
           'Line-by-line AI code explanation with 90%+ accurate logic breakdown, bug identification, and optimization recommendations',
         ]}
         appLink="https://cptracker-gdg.vercel.app/"
