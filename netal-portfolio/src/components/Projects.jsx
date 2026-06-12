@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 
-const saathiScreens = ['/sc1.png', '/sc2.png', '/sc3.png', '/sc4.png']
+const saathiScreens = ['/sclp.png', '/sc1.png', '/sc2.png', '/sc3.png', '/sc4.png']
 
 function Carousel({ images, placeholderCount = 0 }) {
   const [idx, setIdx] = useState(0)
@@ -85,7 +85,10 @@ function ProjectCard({ num, badge, badgeBg, title, date, stack, bullets, appLink
           </ul>
           <div style={{ display: 'flex', gap: '0.8rem' }}>
             <a href={appLink} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', padding: '0.55rem 1.1rem', background: accentColor, color: '#fff', borderRadius: 100, textDecoration: 'none', fontSize: '0.82rem', fontWeight: 700, transition: 'opacity 0.2s' }}
-              onMouseEnter={e => e.currentTarget.style.opacity = '0.85'} onMouseLeave={e => e.currentTarget.style.opacity = '1'}>↗ Live App</a>
+              onMouseEnter={e => { e.currentTarget.style.background = '#0D0D0D'; e.currentTarget.style.transform = 'scale(1.05)'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = accentColor; e.currentTarget.style.transform = 'scale(1)'; }}>
+              App Link
+            </a>
             <a href={ghLink} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', padding: '0.55rem 1.1rem', border: '1.5px solid rgba(0,0,0,0.15)', color: '#0D0D0D', borderRadius: 100, textDecoration: 'none', fontSize: '0.82rem', fontWeight: 700, transition: 'all 0.2s' }}
               onMouseEnter={e => { e.currentTarget.style.background = '#0D0D0D'; e.currentTarget.style.color = '#fff' }} onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#0D0D0D' }}>⌥ GitHub</a>
           </div>
@@ -141,8 +144,8 @@ export default function Projects() {
         ]}
         appLink="https://cptracker-gdg.vercel.app/"
         ghLink="https://github.com/netalgupta/All-In_CodeEvaluator_GDG"
-        carouselImages={[]}
-        placeholderCount={3}
+        carouselImages={['/cplp.png','/cp1.png', '/cp2.png', '/cp3.png', '/cp4.png']}
+        placeholderCount={0}
         accentColor="#CAED4C"
         avatar={emojiAvatars[1]}
       />

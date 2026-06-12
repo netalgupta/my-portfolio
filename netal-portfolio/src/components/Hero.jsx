@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 
-const words = ['Developer', 'AI Builder', 'Creative Director', 'Marketer', 'Python Dev']
+const words = ['Developer', 'AI Builder', 'Web Dev', 'Python Dev']
 
 export default function Hero() {
   const [wordIndex, setWordIndex] = useState(0)
@@ -47,7 +47,7 @@ export default function Hero() {
       display: 'grid',
       gridTemplateColumns: '1fr 1fr',
       alignItems: 'center',
-      padding: '6rem 4rem 2rem',
+      padding: '6rem 5rem 2rem',
       position: 'relative',
       overflow: 'hidden',
       background: 'var(--cream)',
@@ -133,7 +133,7 @@ export default function Hero() {
 
       {/* RIGHT — photo */}
       <div style={{ zIndex: 2, display: 'flex', justifyContent: 'center', alignItems: 'flex-end', position: 'relative', animation: 'slideRight 1s ease forwards 0.4s', opacity: 0 }}>
-        <div style={{ position: 'relative', width: '100%', maxWidth: 480 }}>
+        <div style={{ position: 'relative', width: '100%', maxWidth: 650 }}>
           {/* Big red bg block */}
           <div style={{
             position: 'absolute', bottom: 0, left: 24, right: 0,
@@ -188,10 +188,10 @@ export default function Hero() {
 
           {/* Floating badges */}
           {[
-            { text: '🏆 Top 12 / 250+', top: '8%', left: '-22%', delay: '0s', bg: '#CAED4C', color: '#0D0D0D' },
+            { text: '🏆 Web Developer', top: '8%', left: '-10%', delay: '0s', bg: '#CAED4C', color: '#0D0D0D' },
             { text: '🤖 AI Builder', bottom: '30%', right: '-15%', delay: '1.8s', bg: '#C084FC', color: '#fff' },
             { text: '⚡ 9.8 SGPA', bottom: '12%', left: '-18%', delay: '3.5s', bg: '#FF6B4A', color: '#fff' },
-            { text: '🌟 Next.js', top: '28%', right: '-18%', delay: '2.5s', bg: '#0D0D0D', color: '#CAED4C' },
+            { text: '🌟 Creative Enthusiast', top: '28%', right: '-15%', delay: '2.5s', bg: '#0D0D0D', color: '#CAED4C' },
           ].map((b, i) => (
             <div key={i} style={{
               position: 'absolute',

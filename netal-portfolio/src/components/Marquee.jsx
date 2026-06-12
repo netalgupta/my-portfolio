@@ -1,6 +1,5 @@
 export default function Marquee() {
-  const items = ['Developer ✦', 'AI Builder ✦', 'Creative Director ✦', 'Hackathon Finalist ✦',
-    'Marketer ✦', 'Next.js ✦', 'Python ✦', 'Gemini API ✦', 'Flutter ✦']
+  const items = ['Developer ✦', 'AI Builder ✦', 'Hackathon Finalist ✦', 'Next.js ✦', 'Python ✦', 'Gemini API ✦', 'Flutter ✦']
   const doubled = [...items, ...items]
 
   return (
