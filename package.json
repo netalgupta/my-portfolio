@@ -1,0 +1,12 @@
+{
+  "name": "netal-portfolio-root",
+  "private": true,
+  "workspaces": [
+    "netal-portfolio"
+  ],
+  "scripts": {
+    "build": "npm run build -w netal-portfolio",
+    "dev": "npm run dev -w netal-portfolio",
+    "preview": "npm run preview -w netal-portfolio"
+  }
+}
