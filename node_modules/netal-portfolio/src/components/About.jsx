@@ -39,8 +39,24 @@ export default function About() {
       <style>{`
         @keyframes avatarBob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
         .stat-card:hover { transform:translateY(-8px) rotate(-1deg) !important; box-shadow:0 24px 48px rgba(0,0,0,0.1) !important; }
+        @media (max-width: 900px) {
+          #about { padding: 4rem 2rem; }
+          #about .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+          #about .about-meta { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
+          #about img { width: 80px; }
+          #about .stat-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+        }
+        @media (max-width: 650px) {
+          #about { padding: 3rem 1.2rem; }
+          #about .about-left { display: block; }
+          #about .about-left > div { display: block; }
+          #about .about-left p { font-size: 1rem; }
+          #about .about-right { grid-template-columns: 1fr; }
+          #about .about-badges { gap: 0.5rem; }
+          #about .about-badges span { padding: 0.35rem 0.5rem; font-size: 0.72rem; }
+        }
       `}</style>
-      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '5rem', alignItems: 'center' }}>
+      <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '5rem', alignItems: 'center' }}>
         <div className="reveal">
           <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#E8341A', marginBottom: '0.8rem' }}>About Me</p>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2.2rem, 5vw, 3.5rem)', fontWeight: 900, lineHeight: 1.1, marginBottom: '2rem', letterSpacing: '-0.02em' }}>
@@ -48,7 +64,7 @@ export default function About() {
           </h2>
 
           {/* Cute avatar */}
-          <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.2rem', alignItems: 'flex-start' }}>
+          <div className="about-left" style={{ display: 'flex', gap: '1rem', marginBottom: '1.2rem', alignItems: 'flex-start' }}>
             <img src="/avatar_dev.png" alt="dev avatar" style={{ width: 90, borderRadius: 20, animation: 'avatarBob 3s ease-in-out infinite', flexShrink: 0 }} />
             <div>
               <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#333', marginBottom: '1rem' }}>
@@ -60,10 +76,10 @@ export default function About() {
               <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#333' }}>
                 Currently Machine Learning Intern at <strong>Inhouse</strong>, and recently a Software Development Intern at <strong>SWDC</strong> where I shipped Flutter apps. 10th: 94.6% · MHT-CET: 97 percentile.
               </p>
-              <div style={{ marginTop: '1.2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div className="about-meta" style={{ marginTop: '1.2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div>
                   <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#E8341A', marginBottom: '0.6rem' }}>Technical Skills</div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                  <div className="about-badges" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                     {['JavaScript (ES6+)', 'HTML5', 'CSS3', 'Python', 'Java', 'SQL', 'Flutter (Dart)'].map(s => (
                       <span key={s} style={{ background: '#0D0D0D', color: '#fff', padding: '0.35rem 0.6rem', borderRadius: 100, fontSize: '0.78rem', fontWeight: 700 }}>{s}</span>
                     ))}

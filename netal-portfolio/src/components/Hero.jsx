@@ -42,7 +42,7 @@ export default function Hero() {
   }
 
   return (
-    <section id="hero" style={{
+    <section id="hero" className="hero-section" style={{
       minHeight: '100vh',
       display: 'grid',
       gridTemplateColumns: '1fr 1fr',
@@ -66,12 +66,26 @@ export default function Hero() {
         @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.04)} }
         .photo-img { transition: transform 0.4s ease, filter 0.3s; }
         .photo-img:hover { transform: scale(1.02) translateY(-8px); filter: brightness(1.05); }
-        /* Hide floating badges on small screens to avoid overflow */
-        @media (max-width: 760px) { .badge { display: none !important } }
+        @media (max-width: 1100px) {
+          #hero { grid-template-columns: 1fr; padding: 4rem 2rem 2rem; }
+          #hero .hero-left, #hero .hero-right { opacity: 1 !important; animation: none !important; }
+          #hero .hero-right { justify-content: center; align-items: flex-start; margin-top: 2rem; }
+          #hero .hero-buttons { flex-direction: column; align-items: stretch; }
+          #hero .hero-buttons a { width: 100%; justify-content: center; }
+          #hero .hero-left p { max-width: 100%; }
+          #hero .hero-right { min-height: auto; }
+        }
+        @media (max-width: 760px) {
+          #hero { padding: 3rem 1.5rem 2rem; }
+          #hero .hero-left h1 { font-size: clamp(2.5rem, 10vw, 3.8rem); }
+          #hero .hero-left p { font-size: 1.05rem; }
+          #hero .hero-right { padding-top: 1rem; }
+          .badge { display: none !important; }
+        }
       `}</style>
 
       {/* LEFT */}
-      <div style={{ zIndex: 2, animation: 'slideLeft 1s ease forwards 0.2s', opacity: 0 }}>
+      <div className="hero-left" style={{ zIndex: 2, animation: 'slideLeft 1s ease forwards 0.2s', opacity: 0 }}>
         <div style={{
           display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
           background: '#CAED4C', color: '#0D0D0D',
@@ -99,7 +113,7 @@ export default function Hero() {
           </span>
         </p>
 
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+        <div className="hero-buttons" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
           <a href="#projects" style={{
             display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
             background: '#0D0D0D', color: '#fff',
@@ -125,7 +139,7 @@ export default function Hero() {
       </div>
 
       {/* RIGHT — photo */}
-      <div style={{ zIndex: 2, display: 'flex', justifyContent: 'center', alignItems: 'flex-end', position: 'relative', animation: 'slideRight 1s ease forwards 0.4s', opacity: 0 }}>
+      <div className="hero-right" style={{ zIndex: 2, display: 'flex', justifyContent: 'center', alignItems: 'flex-end', position: 'relative', animation: 'slideRight 1s ease forwards 0.4s', opacity: 0 }}>
         <div style={{ position: 'relative', width: '100%', maxWidth: 650 }}>
           {/* Big red bg block */}
           <div style={{

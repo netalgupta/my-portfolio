@@ -28,13 +28,27 @@ export default function Experience() {
         .tl-item:hover .tl-card { transform: translateX(8px); }
         .tl-card { transition: transform 0.3s; }
         .tl-dot { transition: transform 0.3s, background 0.3s; }
+        @media (max-width: 900px) {
+          #experience { padding: 4rem 2rem; }
+          #experience .experience-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+          #experience .timeline-wrapper { padding-left: 1.2rem; }
+          #experience .tl-item { padding-bottom: 1.2rem !important; }
+          #experience .tl-card { padding: 1rem; }
+          #experience .tl-dot { left: -1.75rem !important; }
+          #experience .sticky-panel { position: static; }
+        }
+        @media (max-width: 650px) {
+          #experience { padding: 3rem 1.2rem; }
+          #experience .tl-card { font-size: 0.95rem; }
+          #experience .tl-card div { max-width: 100% !important; }
+        }
       `}</style>
 
       <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#E8341A', marginBottom: '0.8rem' }}>Where I've Worked</p>
       <h2 className="reveal" style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2.2rem, 5vw, 3.5rem)', fontWeight: 900, letterSpacing: '-0.02em', marginBottom: '3.5rem' }}>Experience</h2>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'start' }}>
-        <div style={{ position: 'relative', paddingLeft: '2.5rem' }}>
+      <div className="experience-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'start' }}>
+        <div className="timeline-wrapper" style={{ position: 'relative', paddingLeft: '2.5rem' }}>
           {/* line */}
           <div style={{ position: 'absolute', left: 0, top: 0, width: 2 }}>
             <div className="tl-line" ref={lineRef} />
@@ -62,7 +76,7 @@ export default function Experience() {
         </div>
 
         {/* Right side deco */}
-        <div className="reveal" style={{ position: 'sticky', top: '6.5rem' }}>
+        <div className="reveal sticky-panel" style={{ position: 'sticky', top: '6.5rem' }}>
           <div style={{ background: '#0D0D0D', borderRadius: 32, padding: '2rem', color: '#fff' }}>
             <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🚀</div>
             <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', fontWeight: 700, marginBottom: '1rem', lineHeight: 1.2 }}>
