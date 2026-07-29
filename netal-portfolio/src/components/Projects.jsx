@@ -163,8 +163,8 @@ export default function Projects() {
         ]}
         appLink="https://studiq-flowfinal.vercel.app/"
         ghLink="https://github.com/netalgupta/Attendance-App"
-        carouselImages={[]}
-        placeholderCount={3}
+        carouselImages={['/ht1.png', 'ht2.png', 'ht3.png']}
+        placeholderCount={0}
         accentColor="#FF8C42"
         avatar={emojiAvatars[2]}
       />
