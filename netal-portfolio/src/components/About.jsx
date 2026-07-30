@@ -79,27 +79,6 @@ export default function About() {
               <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#333', wordWrap: 'break-word', overflowWrap: 'break-word' }}>
                 Currently Machine Learning Intern at <strong>Inhouse</strong>, and recently a Software Development Intern at <strong>SWDC</strong> where I shipped Flutter apps. 10th: 94.6% · MHT-CET: 97 percentile.
               </p>
-              <div className="about-meta" style={{ marginTop: '1.2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                <div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#E8341A', marginBottom: '0.6rem' }}>Technical Skills</div>
-                  <div className="about-badges" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                    {['JavaScript (ES6+)', 'HTML5', 'CSS3', 'Python', 'Java', 'SQL', 'Flutter (Dart)'].map(s => (
-                      <span key={s} style={{ background: '#0D0D0D', color: '#fff', padding: '0.35rem 0.6rem', borderRadius: 100, fontSize: '0.78rem', fontWeight: 700 }}>{s}</span>
-                    ))}
-                    {['React', 'Next.js', 'Node.js', 'REST APIs', 'Git', 'Firebase'].map(s => (
-                      <span key={s} style={{ background: '#E8341A', color: '#0D0D0D', padding: '0.35rem 0.6rem', borderRadius: 100, fontSize: '0.78rem', fontWeight: 700 }}>{s}</span>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#E8341A', marginBottom: '0.6rem' }}>Design & Coursework</div>
-                  <div style={{ fontSize: '0.95rem', color: '#333', lineHeight: 1.6 }}>
-                    <div>Design tools: Figma, Canva, Adobe Photoshop, DaVinci Resolve.</div>
-                    <div style={{ marginTop: '0.5rem' }}>Coursework: Data Structures & Algorithms, DBMS, Operating Systems, OOP, Software Engineering.</div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

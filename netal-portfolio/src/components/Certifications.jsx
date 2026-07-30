@@ -1,6 +1,6 @@
 const certs = [
   { icon: '🎓', name: 'Google Gemini Certified Student', issuer: 'Google for Education', date: 'May 2026 – May 2029', bg: '#CAED4C', text: '#0D0D0D' },
-  { icon: '🏢', name: 'Advanced Software Engineering', issuer: 'Walmart Global Tech · Forage', date: '2025', bg: '#0D0D0D', text: '#fff' },
+  { icon: '🏢', name: 'Advanced Software Engineering', issuer: 'Walmart Global Tech · Forage', date: '2025', bg: '#1A1A1A', text: '#fff', border: '1.5px solid rgba(255,255,255,0.12)' },
   { icon: '💼', name: 'Technology Job Simulation', issuer: 'Deloitte · Forage', date: '2025', bg: '#E8341A', text: '#fff' },
 ]
 
@@ -15,6 +15,7 @@ export default function Certifications() {
           <div key={i} className="reveal" style={{
             background: c.bg, color: c.text,
             borderRadius: 28, padding: '2.2rem',
+            border: c.border || 'none',
             transition: 'transform 0.3s, box-shadow 0.3s',
           }}
             onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-8px) rotate(1deg)'; e.currentTarget.style.boxShadow = '0 24px 48px rgba(0,0,0,0.2)' }}

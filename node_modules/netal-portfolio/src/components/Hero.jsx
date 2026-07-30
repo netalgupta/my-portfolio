@@ -80,22 +80,21 @@ export default function Hero() {
           #hero { padding: 3rem 1.5rem 2rem; }
           #hero .hero-left h1 { font-size: clamp(1.8rem, 9vw, 3rem); line-height: 0.95; }
           #hero .hero-left p { font-size: 1rem; }
-          #hero .hero-right { padding-top: 1rem; max-height: 40vh; }
-          #hero .hero-right > div { max-width: 90vw !important; max-height: 35vh; }
+          #hero .hero-right { padding-top: 1rem; }
           .badge { display: none !important; }
         }
         @media (max-width: 480px) {
           #hero { padding: 2.5rem 1rem 2rem; }
           #hero .hero-left h1 { font-size: clamp(1.2rem, 6vw, 2rem); line-height: 0.9; letter-spacing: -0.04em; }
           #hero .hero-left p { font-size: 0.95rem; }
-          #hero .hero-right { padding-top: 0.8rem; max-height: 35vh; margin-top: 1.5rem; }
-          #hero .hero-right > div { max-width: 85vw !important; max-height: 30vh; }
+          #hero .hero-right { padding-top: 0.8rem; margin-top: 1.5rem; }
+          #hero .hero-right > div { width: 85vw; margin: 0 auto; }
         }
         @media (max-width: 380px) {
           #hero { padding: 2rem 0.8rem 1.5rem; }
           #hero .hero-left h1 { font-size: clamp(0.95rem, 5vw, 1.4rem); line-height: 0.85; letter-spacing: -0.05em; }
-          #hero .hero-right { padding-top: 0.5rem; max-height: 30vh; margin-top: 1rem; }
-          #hero .hero-right > div { max-width: 80vw !important; max-height: 25vh; }
+          #hero .hero-right { padding-top: 0.5rem; margin-top: 1rem; }
+          #hero .hero-right > div { width: 80vw; margin: 0 auto; }
         }
       `}</style>
 

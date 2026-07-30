@@ -5,8 +5,14 @@ export default function Cursor() {
     const cursor = document.getElementById('cursor')
     const ring = document.getElementById('cursor-ring')
     let mx = 0, my = 0, rx = 0, ry = 0
+    let hasMovedOnce = false
 
     const move = (e) => {
+      if (!hasMovedOnce) {
+        hasMovedOnce = true
+        cursor.style.opacity = '1'
+        ring.style.opacity = '0.5'
+      }
       mx = e.clientX; my = e.clientY
       cursor.style.left = mx + 'px'
       cursor.style.top = my + 'px'
@@ -39,8 +45,8 @@ export default function Cursor() {
 
   return (
     <>
-      <div id="cursor" />
-      <div id="cursor-ring" />
+      <div id="cursor" style={{ opacity: 0 }} />
+      <div id="cursor-ring" style={{ opacity: 0 }} />
     </>
   )
 }
