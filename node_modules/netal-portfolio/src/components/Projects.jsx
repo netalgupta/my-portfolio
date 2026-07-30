@@ -58,15 +58,16 @@ const emojiAvatars = [
 
 function ProjectCard({ num, badge, badgeBg, title, date, stack, bullets, appLink, ghLink, carouselImages, placeholderCount = 2, accentColor, avatar }) {
   return (
-    <div className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3.5rem', alignItems: 'center', marginBottom: '6rem' }}>
+    <div className="reveal project-card-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3.5rem', alignItems: 'center', marginBottom: '6rem' }}>
       <div>
-        <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '7rem', fontWeight: 900, color: 'rgba(0,0,0,0.04)', lineHeight: 1, marginBottom: '-1.5rem' }}>{num}</div>
-        <div style={{
-          background: '#fff', borderRadius: 28, padding: '2.2rem',
-          border: '1px solid rgba(0,0,0,0.06)',
-          transition: 'transform 0.4s, box-shadow 0.4s',
-        }}
-          className="project-card"
+        <div className="project-number" style={{ fontFamily: "'Playfair Display', serif", fontSize: '7rem', fontWeight: 900, color: 'rgba(0,0,0,0.04)', lineHeight: 1, marginBottom: '-1.5rem' }}>{num}</div>
+        <div
+          className="project-card-content project-card"
+          style={{
+            background: '#fff', borderRadius: 28, padding: '2.2rem',
+            border: '1px solid rgba(0,0,0,0.06)',
+            transition: 'transform 0.4s, box-shadow 0.4s',
+          }}
           onMouseEnter={e => { e.currentTarget.style.transform = 'perspective(900px) rotateX(2deg) rotateY(-3deg) translateY(-10px)'; e.currentTarget.style.boxShadow = '0 32px 64px rgba(0,0,0,0.12)' }}
           onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = 'none' }}
         >
@@ -77,13 +78,13 @@ function ProjectCard({ num, badge, badgeBg, title, date, stack, bullets, appLink
           </div>
           <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.7rem', fontWeight: 700, marginBottom: '0.3rem', lineHeight: 1.2 }}>{title}</h3>
           <p style={{ fontSize: '0.78rem', color: '#888', marginBottom: '1rem', fontWeight: 600 }}>{date}</p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.2rem' }}>
+          <div className="project-stack" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.2rem' }}>
             {stack.map(s => <span key={s} style={{ background: '#F0EDE8', fontSize: '0.74rem', fontWeight: 700, padding: '0.3rem 0.75rem', borderRadius: 100 }}>{s}</span>)}
           </div>
           <ul style={{ fontSize: '0.88rem', lineHeight: 1.75, color: '#444', paddingLeft: '1rem', marginBottom: '1.5rem' }}>
             {bullets.map((b, i) => <li key={i}>{b}</li>)}
           </ul>
-          <div style={{ display: 'flex', gap: '0.8rem' }}>
+          <div className="project-actions" style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap' }}>
             <a href={appLink} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', padding: '0.55rem 1.1rem', background: accentColor, color: '#fff', borderRadius: 100, textDecoration: 'none', fontSize: '0.82rem', fontWeight: 700, transition: 'opacity 0.2s' }}
               onMouseEnter={e => { e.currentTarget.style.background = '#0D0D0D'; e.currentTarget.style.transform = 'scale(1.05)'; }}
               onMouseLeave={e => { e.currentTarget.style.background = accentColor; e.currentTarget.style.transform = 'scale(1)'; }}>
@@ -104,6 +105,22 @@ function ProjectCard({ num, badge, badgeBg, title, date, stack, bullets, appLink
 export default function Projects() {
   return (
     <section id="projects" style={{ padding: '7rem 4rem', background: 'var(--cream)' }}>
+      <style>{`
+        @media (max-width: 900px) {
+          #projects { padding: 5rem 1.2rem !important; }
+          #projects .project-card-row { grid-template-columns: 1fr !important; gap: 1.5rem !important; margin-bottom: 3rem !important; }
+          #projects .project-number { font-size: 3.6rem !important; margin-bottom: -0.7rem !important; }
+          #projects .project-card-content { padding: 1.3rem !important; }
+          #projects .project-actions { flex-direction: column !important; }
+          #projects .project-actions a { justify-content: center !important; }
+        }
+        @media (max-width: 640px) {
+          #projects { padding: 4rem 1rem !important; }
+          #projects .project-card-content { padding: 1rem !important; }
+          #projects .project-stack span { font-size: 0.68rem; }
+          #projects ul { font-size: 0.82rem; }
+        }
+      `}</style>
       <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#E8341A', marginBottom: '0.8rem' }}>What I've Built</p>
       <h2 className="reveal" style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2.2rem, 5vw, 3.5rem)', fontWeight: 900, letterSpacing: '-0.02em', marginBottom: '4rem' }}>Selected Projects</h2>
 

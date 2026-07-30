@@ -29,6 +29,11 @@ body {
   overflow-x: hidden;
 }
 
+p, h1, h2, h3, h4, h5, h6, li, a, span {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 /* Cursor */
 #cursor {
   position: fixed; width: 12px; height: 12px;
@@ -54,3 +59,18 @@ body {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--cream); }
 ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+@media (max-width: 900px) {
+  body { cursor: auto; }
+  section[id] { padding-left: 1.2rem !important; padding-right: 1.2rem !important; }
+  nav { padding: 1rem 1.2rem !important; }
+  nav ul { gap: 0.7rem 1rem !important; flex-wrap: wrap !important; justify-content: flex-end !important; }
+  nav ul li a { font-size: 0.7rem !important; }
+}
+
+@media (max-width: 640px) {
+  section[id] { padding-left: 1rem !important; padding-right: 1rem !important; }
+  nav { padding: 0.9rem 1rem !important; }
+  nav ul { gap: 0.55rem 0.8rem !important; }
+  nav ul li a { font-size: 0.64rem !important; }
+}

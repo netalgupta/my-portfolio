@@ -39,8 +39,10 @@ export default function Experience() {
         }
         @media (max-width: 650px) {
           #experience { padding: 3rem 1.2rem; }
-          #experience .tl-card { font-size: 0.95rem; }
-          #experience .tl-card div { max-width: 100% !important; }
+          #experience .timeline-wrapper { padding-left: 1.2rem !important; }
+          #experience .tl-card { font-size: 0.95rem; padding: 1rem !important; }
+          #experience .tl-card div { max-width: 100% !important; overflow-wrap: anywhere; }
+          #experience .tl-dot { left: -1.55rem !important; }
         }
       `}</style>
 

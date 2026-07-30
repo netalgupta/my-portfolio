@@ -48,10 +48,12 @@ export default function About() {
         }
         @media (max-width: 650px) {
           #about { padding: 3rem 1.2rem; }
-          #about .about-left { display: block; }
+          #about .about-left { flex-direction: column; align-items: flex-start; }
           #about .about-left > div { display: block; }
+          #about .about-left img { width: 70px; margin-bottom: 0.8rem; }
           #about .about-left p { font-size: 1rem; }
-          #about .about-right { grid-template-columns: 1fr; }
+          #about .about-right { grid-template-columns: 1fr !important; }
+          #about .about-meta { grid-template-columns: 1fr !important; }
           #about .about-badges { gap: 0.5rem; }
           #about .about-badges span { padding: 0.35rem 0.5rem; font-size: 0.72rem; }
         }
@@ -101,7 +103,7 @@ export default function About() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }} className="reveal">
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }} className="reveal about-right">
           {stats.map((s, i) => (
             <div key={i} className="stat-card" style={{
               background: i % 2 === 0 ? '#0D0D0D' : '#E8341A',

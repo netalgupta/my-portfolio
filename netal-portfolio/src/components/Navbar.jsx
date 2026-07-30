@@ -16,6 +16,7 @@ export default function Navbar() {
       position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 1000,
       padding: '1.2rem 3rem',
       display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+      flexWrap: 'wrap', rowGap: '0.75rem',
       background: scrolled ? 'rgba(250,247,242,0.94)' : 'transparent',
       backdropFilter: scrolled ? 'blur(14px)' : 'none',
       borderBottom: scrolled ? '1px solid rgba(0,0,0,0.06)' : 'none',
@@ -24,7 +25,7 @@ export default function Navbar() {
       <a href="#hero" style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 900, color: '#0D0D0D', textDecoration: 'none' }}>
         NG<span style={{ color: '#E8341A' }}>.</span>
       </a>
-      <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none' }}>
+      <ul style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', listStyle: 'none', margin: 0, padding: 0 }}>
         {links.map(l => (
           <li key={l}>
             <a href={`#${l.toLowerCase()}`} style={{

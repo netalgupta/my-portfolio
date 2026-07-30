@@ -158,7 +158,7 @@ export default function Hero() {
           }} />
 
           {/* HELLO BUBBLE */}
-          <div style={{
+          <div className="hero-bubble" style={{
             position: 'absolute', top: 10, left: -80, zIndex: 10,
             background: '#0D0D0D', color: '#fff',
             padding: '0.9rem 1.2rem', borderRadius: '20px 20px 20px 4px',

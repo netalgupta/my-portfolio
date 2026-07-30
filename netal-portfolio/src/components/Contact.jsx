@@ -20,6 +20,13 @@ export default function Contact() {
         .social-link-btn:hover::before { left:0; }
         .social-link-btn span { position: relative; z-index: 1; }
         .social-link-btn:hover { color: #fff !important; border-color: #0D0D0D !important; }
+        @media (max-width: 640px) {
+          #contact { padding: 5rem 1rem !important; }
+          #contact h2 { font-size: clamp(2.3rem, 8vw, 3.3rem) !important; }
+          #contact p { font-size: 1rem; }
+          #contact .social-links { flex-direction: column !important; align-items: stretch !important; }
+          #contact .social-link-btn { width: 100%; justify-content: center; }
+        }
       `}</style>
 
       {/* deco blobs */}
@@ -38,7 +45,7 @@ export default function Contact() {
         Open to internships, collabs, hackathon teams, creative projects, and anything in between.
       </p>
 
-      <div className="reveal" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+      <div className="reveal social-links" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
         {[
           { label: '✉ netalgupta4815@gmail.com', href: 'mailto:netalgupta4815@gmail.com' },
           { label: '⌥ github.com/netalgupta', href: 'https://github.com/netalgupta' },
