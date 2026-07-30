@@ -108,17 +108,21 @@ export default function Projects() {
       <style>{`
         @media (max-width: 900px) {
           #projects { padding: 5rem 1.2rem !important; }
-          #projects .project-card-row { grid-template-columns: 1fr !important; gap: 1.5rem !important; margin-bottom: 3rem !important; }
+          #projects .project-card-row { grid-template-columns: 1fr !important; gap: 1.5rem !important; margin-bottom: 3rem !important; width: 100%; overflow: hidden; }
           #projects .project-number { font-size: 3.6rem !important; margin-bottom: -0.7rem !important; }
           #projects .project-card-content { padding: 1.3rem !important; }
           #projects .project-actions { flex-direction: column !important; }
           #projects .project-actions a { justify-content: center !important; }
+          #projects .carousel-img { width: 100%; height: auto; }
         }
         @media (max-width: 640px) {
-          #projects { padding: 4rem 1rem !important; }
-          #projects .project-card-content { padding: 1rem !important; }
-          #projects .project-stack span { font-size: 0.68rem; }
-          #projects ul { font-size: 0.82rem; }
+          #projects { padding: 4rem 1rem !important; width: 100%; overflow-x: hidden; }
+          #projects .project-card-row { width: 100%; max-width: 100vw; margin-left: auto; margin-right: auto; overflow: hidden; }
+          #projects .project-card-content { padding: 1rem !important; overflow-wrap: break-word; }
+          #projects .project-stack { overflow-x: auto; }
+          #projects .project-stack span { font-size: 0.68rem; white-space: nowrap; }
+          #projects ul { font-size: 0.82rem; word-wrap: break-word; }
+          #projects .carousel-img { width: 100%; max-width: 100vw; }
         }
       `}</style>
       <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#E8341A', marginBottom: '0.8rem' }}>What I've Built</p>

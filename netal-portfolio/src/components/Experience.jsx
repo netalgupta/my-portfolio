@@ -39,10 +39,15 @@ export default function Experience() {
         }
         @media (max-width: 650px) {
           #experience { padding: 3rem 1.2rem; }
-          #experience .timeline-wrapper { padding-left: 1.2rem !important; }
-          #experience .tl-card { font-size: 0.95rem; padding: 1rem !important; }
-          #experience .tl-card div { max-width: 100% !important; overflow-wrap: anywhere; }
-          #experience .tl-dot { left: -1.55rem !important; }
+          #experience .timeline-wrapper { padding-left: 1rem !important; }
+          #experience .tl-card { font-size: 0.9rem; padding: 0.9rem !important; }
+          #experience .tl-date { font-size: 0.65rem !important; margin-bottom: 0.3rem !important; }
+          #experience .tl-role-line { flex-wrap: wrap; gap: 0.3rem !important; align-items: flex-start !important; }
+          #experience .tl-role { font-size: 1rem !important; }
+          #experience .tl-company { font-size: 0.75rem !important; margin-bottom: 0.5rem !important; word-wrap: break-word; overflow-wrap: break-word; }
+          #experience .tl-desc { font-size: 0.82rem !important; line-height: 1.5; max-width: 100% !important; overflow-wrap: break-word; word-wrap: break-word; }
+          #experience .tl-dot { left: -1.4rem !important; top: 8px !important; }
+          #experience .tl-avatar { font-size: 0.95rem !important; flex-shrink: 0; }
         }
       `}</style>
 
@@ -64,14 +69,14 @@ export default function Experience() {
                 background: '#E8341A', border: '3px solid var(--cream)',
               }} />
               <div className="tl-card">
-                <div style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#E8341A', marginBottom: '0.2rem' }}>{item.date}</div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.15rem' }}>
-                  <span style={{ fontSize: '1.05rem' }}>{item.avatar}</span>
-                  <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.1rem', fontWeight: 700 }}>{item.role}</span>
-                  {item.tag && <span style={{ background: item.tagBg, color: item.tagColor, fontSize: '0.65rem', fontWeight: 800, padding: '0.2rem 0.6rem', borderRadius: 100, marginLeft: 4 }}>{item.tag}</span>}
+                <div className="tl-date" style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#E8341A', marginBottom: '0.2rem' }}>{item.date}</div>
+                <div className="tl-role-line" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.3rem' }}>
+                  <span className="tl-avatar" style={{ fontSize: '1.05rem', flexShrink: 0 }}>{item.avatar}</span>
+                  <span className="tl-role" style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.1rem', fontWeight: 700, lineHeight: 1.2 }}>{item.role}</span>
+                  {item.tag && <span className="tl-tag" style={{ background: item.tagBg, color: item.tagColor, fontSize: '0.65rem', fontWeight: 800, padding: '0.2rem 0.5rem', borderRadius: 100, marginLeft: 2, flexShrink: 0 }}>{item.tag}</span>}
                 </div>
-                <div style={{ fontSize: '0.8rem', color: '#888', marginBottom: '0.4rem', fontWeight: 600 }}>{item.company}</div>
-                <div style={{ fontSize: '0.86rem', lineHeight: 1.6, color: '#444', maxWidth: 420 }}>{item.desc}</div>
+                <div className="tl-company" style={{ fontSize: '0.8rem', color: '#888', marginBottom: '0.4rem', fontWeight: 600, wordWrap: 'break-word', overflowWrap: 'break-word' }}>{item.company}</div>
+                <div className="tl-desc" style={{ fontSize: '0.86rem', lineHeight: 1.6, color: '#444', maxWidth: 420 }}>{item.desc}</div>
               </div>
             </div>
           ))}

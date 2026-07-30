@@ -69,7 +69,8 @@ export default function Hero() {
         @media (max-width: 1100px) {
           #hero { grid-template-columns: 1fr; padding: 4rem 2rem 2rem; }
           #hero .hero-left, #hero .hero-right { opacity: 1 !important; animation: none !important; }
-          #hero .hero-right { justify-content: center; align-items: flex-start; margin-top: 2rem; }
+          #hero .hero-right { justify-content: center; align-items: flex-start; margin-top: 2rem; width: 100%; max-width: 100%; }
+          #hero .hero-right > div { max-width: 100%; width: 100%; }
           #hero .hero-buttons { flex-direction: column; align-items: stretch; }
           #hero .hero-buttons a { width: 100%; justify-content: center; }
           #hero .hero-left p { max-width: 100%; }
@@ -77,10 +78,24 @@ export default function Hero() {
         }
         @media (max-width: 760px) {
           #hero { padding: 3rem 1.5rem 2rem; }
-          #hero .hero-left h1 { font-size: clamp(2.5rem, 10vw, 3.8rem); }
-          #hero .hero-left p { font-size: 1.05rem; }
-          #hero .hero-right { padding-top: 1rem; }
+          #hero .hero-left h1 { font-size: clamp(1.8rem, 9vw, 3rem); line-height: 0.95; }
+          #hero .hero-left p { font-size: 1rem; }
+          #hero .hero-right { padding-top: 1rem; max-height: 40vh; }
+          #hero .hero-right > div { max-width: 90vw !important; max-height: 35vh; }
           .badge { display: none !important; }
+        }
+        @media (max-width: 480px) {
+          #hero { padding: 2.5rem 1rem 2rem; }
+          #hero .hero-left h1 { font-size: clamp(1.2rem, 6vw, 2rem); line-height: 0.9; letter-spacing: -0.04em; }
+          #hero .hero-left p { font-size: 0.95rem; }
+          #hero .hero-right { padding-top: 0.8rem; max-height: 35vh; margin-top: 1.5rem; }
+          #hero .hero-right > div { max-width: 85vw !important; max-height: 30vh; }
+        }
+        @media (max-width: 380px) {
+          #hero { padding: 2rem 0.8rem 1.5rem; }
+          #hero .hero-left h1 { font-size: clamp(0.95rem, 5vw, 1.4rem); line-height: 0.85; letter-spacing: -0.05em; }
+          #hero .hero-right { padding-top: 0.5rem; max-height: 30vh; margin-top: 1rem; }
+          #hero .hero-right > div { max-width: 80vw !important; max-height: 25vh; }
         }
       `}</style>
 

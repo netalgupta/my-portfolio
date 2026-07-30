@@ -48,14 +48,15 @@ export default function About() {
         }
         @media (max-width: 650px) {
           #about { padding: 3rem 1.2rem; }
+          #about h2 { font-size: 1.8rem; line-height: 1.2; }
           #about .about-left { flex-direction: column; align-items: flex-start; }
-          #about .about-left > div { display: block; }
-          #about .about-left img { width: 70px; margin-bottom: 0.8rem; }
-          #about .about-left p { font-size: 1rem; }
+          #about .about-left > div { display: block; max-width: 100%; word-wrap: break-word; }
+          #about .about-left img { width: 70px; margin-bottom: 0.8rem; flex-shrink: 0; }
+          #about .about-left p { font-size: 0.95rem; line-height: 1.7; max-width: 100%; word-wrap: break-word; overflow-wrap: break-word; }
           #about .about-right { grid-template-columns: 1fr !important; }
-          #about .about-meta { grid-template-columns: 1fr !important; }
-          #about .about-badges { gap: 0.5rem; }
-          #about .about-badges span { padding: 0.35rem 0.5rem; font-size: 0.72rem; }
+          #about .about-meta { grid-template-columns: 1fr !important; gap: 0.8rem !important; }
+          #about .about-badges { gap: 0.4rem; flex-wrap: wrap; }
+          #about .about-badges span { padding: 0.3rem 0.5rem; font-size: 0.68rem; }
         }
       `}</style>
       <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '5rem', alignItems: 'center' }}>
@@ -68,14 +69,14 @@ export default function About() {
           {/* Cute avatar */}
           <div className="about-left" style={{ display: 'flex', gap: '1rem', marginBottom: '1.2rem', alignItems: 'flex-start' }}>
             <img src="/avatar_dev.png" alt="dev avatar" style={{ width: 90, borderRadius: 20, animation: 'avatarBob 3s ease-in-out infinite', flexShrink: 0 }} />
-            <div>
-              <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#333', marginBottom: '1rem' }}>
+            <div style={{ maxWidth: '100%', wordWrap: 'break-word', overflowWrap: 'break-word' }}>
+              <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#333', marginBottom: '1rem', wordWrap: 'break-word', overflowWrap: 'break-word' }}>
                 B.Tech CSBS @ KJ Somaiya School of Engineering, SGPA <strong>10</strong>. I live at the intersection of code, AI, and creativity — building products that solve real problems.
               </p>
-              <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#333', marginBottom: '1rem' }}>
+              <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#333', marginBottom: '1rem', wordWrap: 'break-word', overflowWrap: 'break-word' }}>
                 From shipping AI-powered Alzheimer's companions to creating viral social content, I bring technical depth and creative instinct to everything I touch.
               </p>
-              <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#333' }}>
+              <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#333', wordWrap: 'break-word', overflowWrap: 'break-word' }}>
                 Currently Machine Learning Intern at <strong>Inhouse</strong>, and recently a Software Development Intern at <strong>SWDC</strong> where I shipped Flutter apps. 10th: 94.6% · MHT-CET: 97 percentile.
               </p>
               <div className="about-meta" style={{ marginTop: '1.2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
