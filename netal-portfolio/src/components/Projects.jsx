@@ -128,6 +128,27 @@ export default function Projects() {
 
       <ProjectCard
         num="01"
+        badge="🥈 2nd of 90 Teams"
+        badgeBg="#0D0D0D"
+        title="VARUNA"
+        date="Smart India Hackathon · Geospatial Systems & Visualization Lead"
+        stack={['Next.js 14', 'Deck.gl', 'Mapbox GL/MapLibre', 'FastAPI', 'PostgreSQL/PostGIS']}
+        bullets={[
+          'Ocean & Marine Biodiversity Data Platform',
+          'Built a WebGL Deck.gl ocean map rendering 3,800+ ARGO float positions with a depth-filtering scrubber',
+          'Replaced mock data with live CMLRE master CSV ingestion across the overview map and biodiversity page',
+          'Shipped species search with deep-profile simulation, generalized biodiversity analytics schemas, and built an anomaly/early-warning alert center for marine heatwave and hypoxia alerts',
+        ]}
+        appLink="#projects"
+        ghLink="https://github.com/netalgupta/VARUNA"
+        carouselImages={[]}
+        placeholderCount={1}
+        accentColor="#0D0D0D"
+        avatar={emojiAvatars[3]}
+      />
+
+      <ProjectCard
+        num="02"
         badge="🏆 Top 12 / 250+ Teams"
         badgeBg="#E8341A"
         title="SaathiCare"
@@ -148,7 +169,7 @@ export default function Projects() {
       />
 
       <ProjectCard
-        num="02"
+        num="03"
         badge="🏆 Top 6 — GDG Hackathon"
         badgeBg="#0D0D0D"
         title="AI CP Tracker"
@@ -168,7 +189,7 @@ export default function Projects() {
       />
 
       <ProjectCard
-        num="03"
+        num="04"
         badge="🥇 Top 6 — Nexathon"
         badgeBg="#FF8C42"
         title="HackTrack"
@@ -186,26 +207,6 @@ export default function Projects() {
         avatar={emojiAvatars[2]}
       />
 
-      <ProjectCard
-        num="04"
-        badge="🥈 2nd of 90 Teams"
-        badgeBg="#0D0D0D"
-        title="VARUNA"
-        date="Smart India Hackathon · Geospatial Systems & Visualization Lead"
-        stack={['Next.js 14', 'Deck.gl', 'Mapbox GL/MapLibre', 'FastAPI', 'PostgreSQL/PostGIS']}
-        bullets={[
-          'Ocean & Marine Biodiversity Data Platform',
-          'Built a WebGL Deck.gl ocean map rendering 3,800+ ARGO float positions with a depth-filtering scrubber',
-          'Replaced mock data with live CMLRE master CSV ingestion across the overview map and biodiversity page',
-          'Shipped species search with deep-profile simulation, generalized biodiversity analytics schemas, and built an anomaly/early-warning alert center for marine heatwave and hypoxia alerts',
-        ]}
-        appLink="#projects"
-        ghLink="https://github.com/netalgupta/VARUNA"
-        carouselImages={[]}
-        placeholderCount={1}
-        accentColor="#0D0D0D"
-        avatar={emojiAvatars[3]}
-      />
     </section>
   )
 }
