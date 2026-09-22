@@ -1,8 +1,8 @@
 const hacks = [
-  { trophy: '🏆', name: 'AfterMath Hackathon', result: 'Top 12 from 36/250+ Teams', project: 'SaathiCare · Team Lead', bg: '#E8341A', text: '#fff', accent: '#CAED4C' },
-  { trophy: '🥇', name: 'Nexathon', result: 'Top 6', project: 'HackTrack — Face Rec + Geo-fence', bg: '#CAED4C', text: '#0D0D0D', accent: '#E8341A' },
-  { trophy: '�', name: 'Smart India Hackathon', result: 'Advanced to Round 2', project: 'National Level · AI-driven solution', bg: '#0D0D0D', text: '#fff', accent: '#CAED4C' },
-  { trophy: '🤖', name: 'GDG Hackathon', result: 'Built & Presented', project: 'AI CP Tracker · LLM code eval', bg: '#FF8C42', text: '#fff', accent: '#fff' },
+  { trophy: '🏆', name: 'Smart India Hackathon (Internal Round)', result: 'Ranked 2nd of 90 teams', project: 'VARUNA', bg: '#0D0D0D', text: '#fff', accent: '#CAED4C' },
+  { trophy: '🏆', name: 'AfterMath Hackathon', result: 'Top 12 finalist of 36/250+ teams', project: 'SaathiCare', bg: '#E8341A', text: '#fff', accent: '#CAED4C' },
+  { trophy: '🥇', name: 'Nexathon', result: 'Top 6', project: 'HackTrack — facial recognition + geo-fencing', bg: '#CAED4C', text: '#0D0D0D', accent: '#E8341A' },
+  { trophy: '🤖', name: 'GDG Hackathon', result: 'Top 6', project: 'AI Competitive Programming Tracker', bg: '#FF8C42', text: '#fff', accent: '#fff' },
 ]
 
 export default function Hackathons() {

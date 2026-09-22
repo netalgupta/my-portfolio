@@ -77,7 +77,7 @@ export default function About() {
                 From shipping AI-powered Alzheimer's companions to creating viral social content, I bring technical depth and creative instinct to everything I touch.
               </p>
               <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#333', wordWrap: 'break-word', overflowWrap: 'break-word' }}>
-                Currently Machine Learning Intern at <strong>Inhouse</strong>, and recently a Software Development Intern at <strong>SWDC</strong> where I shipped Flutter apps. 10th: 94.6% · MHT-CET: 97 percentile.
+                Currently an ML Intern at <strong>Inhouse</strong> working on virtual try-on and fit-intelligence, and Creative Head at <strong>KJSSE ACM Student Chapter</strong>. Previously a Software Development Intern at <strong>SWDC</strong> where I shipped Flutter apps. 10th: 94.6% · MHT-CET: 97 percentile.
               </p>
             </div>
           </div>
