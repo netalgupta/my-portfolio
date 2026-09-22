@@ -1,7 +1,7 @@
 const certs = [
   { icon: '🎓', name: 'Google Gemini Certified Student', issuer: 'Google for Education', date: 'May 2026 – May 2029', bg: '#CAED4C', text: '#0D0D0D' },
-  { icon: '🏢', name: 'Advanced Software Engineering', issuer: 'Walmart Global Tech · Forage', date: '2025', bg: '#1A1A1A', text: '#fff', border: '1.5px solid rgba(255,255,255,0.12)' },
-  { icon: '💼', name: 'Technology Job Simulation', issuer: 'Deloitte · Forage', date: '2025', bg: '#E8341A', text: '#fff' },
+  { icon: '🏢', name: 'Walmart Global Tech Advanced Software Engineering', issuer: 'Forage · Python ETL pipelines, data structures, UML/ERD', date: '2025', bg: '#1A1A1A', text: '#fff', border: '1.5px solid rgba(255,255,255,0.12)' },
+  { icon: '💼', name: 'Deloitte Technology Job Simulation', issuer: 'Forage · Telemetry data, system design, software proposals', date: '2025', bg: '#E8341A', text: '#fff' },
 ]
 
 export default function Certifications() {

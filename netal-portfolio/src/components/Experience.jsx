@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react'
 
 const items = [
-  { date: 'July 2026 · Present', role: 'Machine Learning Intern', company: 'Inhouse', desc: 'Working on a realistic virtual try-on experience: building models for garment-to-body mapping and image synthesis to enable accurate, real-time virtual apparel fitting.', tag: '🔥 Current', tagBg: '#CAED4C', tagColor: '#0D0D0D', avatar: '🤖' },
+  { date: 'July 2026 – Present', role: 'ML Intern', company: 'Inhouse', desc: 'Building virtual try-on and fit-intelligence systems for accurate, real-time virtual apparel fitting.', tag: '🔥 Current', tagBg: '#CAED4C', tagColor: '#0D0D0D', avatar: '🤖' },
   { date: 'Jun 2026 – Jul 2026', role: 'Software Development Intern', company: 'SWDC — Software Development Working Committee', desc: 'Developed cross-platform mobile applications with Flutter/Dart; collaborated on full-stack feature development and evaluated frameworks to improve performance and UX.', avatar: '👨‍💻' },
   { date: 'Apr 2026', role: 'Campus Ambassador', company: 'Internshala', desc: 'Drove student outreach and platform adoption through targeted campaigns and peer engagement.', avatar: '📣' },
   { date: 'Aug – Sept 2025', role: 'Social Media & Marketing Intern', company: 'Fostride', desc: 'Trend-driven short-form content achieving 2K–4.5K+ views per reel. End-to-end creative production from ideation to publishing.', avatar: '🎬' },
   { date: 'Aug 2025', role: 'Marketing Intern', company: 'Corizo', desc: 'Executed lead generation campaigns, analysed performance data, contributed to optimisation strategies.', avatar: '📈' },
-  { date: '2024 – 2025', role: 'PR Team Member', company: 'KJSSE ACM Student Chapter', desc: 'Led visual and written communication for campus outreach; event branding and creative collateral.', avatar: '🎨' },
+  { date: 'July 2026 – Present', role: 'Creative Head', company: 'KJSSE ACM Student Chapter', desc: 'Leading creative direction, visual communication, and event branding for the student chapter.', tag: '🔥 Current', tagBg: '#CAED4C', tagColor: '#0D0D0D', avatar: '🎨' },
 ]
 
 export default function Experience() {
