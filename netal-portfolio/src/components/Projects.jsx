@@ -53,7 +53,6 @@ function Carousel({ images, placeholderCount = 0 }) {
 const projectMarks = [
   { mark: 'SC', bg: '#FFE4E1', label: 'SaathiCare' },
   { mark: 'CP', bg: '#F0FFF0', label: 'CP Tracker' },
-  { mark: 'HT', bg: '#FFF0E6', label: 'HackTrack' },
   { mark: 'VR', bg: '#E0F7FA', label: 'VARUNA' },
   { mark: 'AI', bg: '#F3E8FF', label: 'SIH Workbench' },
 ]
@@ -87,11 +86,11 @@ function ProjectCard({ num, badge, badgeBg, title, date, stack, bullets, appLink
             {bullets.map((b, i) => <li key={i}>{b}</li>)}
           </ul>
           <div className="project-actions" style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap' }}>
-            <a href={appLink} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', padding: '0.55rem 1.1rem', background: accentColor, color: '#fff', borderRadius: 100, textDecoration: 'none', fontSize: '0.82rem', fontWeight: 700, transition: 'opacity 0.2s' }}
+            {appLink && <a href={appLink} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', padding: '0.55rem 1.1rem', background: accentColor, color: '#fff', borderRadius: 100, textDecoration: 'none', fontSize: '0.82rem', fontWeight: 700, transition: 'opacity 0.2s' }}
               onMouseEnter={e => { e.currentTarget.style.background = '#0D0D0D'; e.currentTarget.style.transform = 'scale(1.05)'; }}
               onMouseLeave={e => { e.currentTarget.style.background = accentColor; e.currentTarget.style.transform = 'scale(1)'; }}>
               App Link
-            </a>
+            </a>}
             <a href={ghLink} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', padding: '0.55rem 1.1rem', border: '1.5px solid rgba(0,0,0,0.15)', color: '#0D0D0D', borderRadius: 100, textDecoration: 'none', fontSize: '0.82rem', fontWeight: 700, transition: 'all 0.2s' }}
               onMouseEnter={e => { e.currentTarget.style.background = '#0D0D0D'; e.currentTarget.style.color = '#fff' }} onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#0D0D0D' }}>              GitHub</a>
           </div>
@@ -140,12 +139,12 @@ export default function Projects() {
           'Built the Retrieval Observatory — chunk-level confidence scores, BM25 vs dense scoring breakdown, retrieval trace UI — and 4 registry tools for graph/retrieval transparency',
           '700+ passing tests, 15/15 PS requirements covered, 95/98 functional checks passed; adversarial approval gate 6/6 denied (token reuse, payload swap, expiry)',
         ]}
-        appLink="#projects"
+        appLink={null}
         ghLink="https://github.com/Aryan-lomte05/SIH26117-Sovereign-Workbench"
         carouselImages={[]}
         placeholderCount={3}
         accentColor="#6D28D9"
-        avatar={projectMarks[4]}
+        avatar={projectMarks[3]}
       />
 
       <ProjectCard
@@ -160,12 +159,12 @@ export default function Projects() {
           'Replaced mock data with live CMLRE master CSV ingestion across the overview map and biodiversity page, and shipped species search with deep-profile simulation for real marine survey records',
           'Generalized the biodiversity analytics dataset schema for scalable cross-species reporting, and built the proactive anomaly/early-warning alert center surfacing marine heatwave and hypoxia alerts',
         ]}
-        appLink="#projects"
-        ghLink="https://github.com/netalgupta/VARUNA"
+        appLink={null}
+        ghLink="https://github.com/Aryan-lomte05/Varuna"
         carouselImages={[]}
         placeholderCount={3}
         accentColor="#0D0D0D"
-        avatar={projectMarks[3]}
+        avatar={{ mark: 'VR', bg: '#E0F7FA' }}
       />
 
       <ProjectCard
@@ -207,25 +206,6 @@ export default function Projects() {
         placeholderCount={0}
         accentColor="#CAED4C"
         avatar={projectMarks[1]}
-      />
-
-      <ProjectCard
-        num="05"
-        badge="Top 6 — Nexathon"
-        badgeBg="#FF8C42"
-        title="HackTrack"
-        date="Dec 2025 · Nexathon"
-        stack={['Recognition API', 'Role-based Architecture']}
-        bullets={[
-          'Facial recognition with 50m geo-fence validation + tamper-proof dynamic QR',
-          'Analytics dashboard and attendance pattern tracking',
-        ]}
-        appLink="https://studiq-flowfinal.vercel.app/"
-        ghLink="https://github.com/netalgupta/Attendance-App"
-        carouselImages={['/ht1.png', 'ht2.png', 'ht3.png']}
-        placeholderCount={0}
-        accentColor="#FF8C42"
-        avatar={projectMarks[2]}
       />
 
     </section>

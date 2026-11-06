@@ -1,9 +1,9 @@
 const hacks = [
-  { name: 'Indradhanu — International Grand Challenge', result: 'Round 1 cleared · Round 2 in January', project: 'Global challenge participation', bg: '#0D0D0D', text: '#fff', accent: '#CAED4C' },
-  { name: 'Smart India Hackathon 2026 (Internal Round)', result: 'Ranked 2nd out of ~150 teams', project: 'VARUNA', bg: '#0D0D0D', text: '#fff', accent: '#CAED4C' },
+  { name: 'Indradhanu — International Grand Challenge', result: 'Round 1 cleared · Round 2 in January', project: 'Global challenge participation', bg: '#6D28D9', text: '#fff', accent: '#CAED4C' },
+  { name: 'Smart India Hackathon 2026 (Internal Round)', result: 'Ranked 2nd out of ~150 teams', project: 'VARUNA', bg: '#F3E8FF', text: '#0D0D0D', accent: '#6D28D9' },
   { name: 'AfterMath Hackathon', result: 'Top 12 finalist of 36/250+ teams', project: 'SaathiCare', bg: '#FF8C42', text: '#fff', accent: '#CAED4C' },
-  { name: 'GDG Hackathon', result: 'Top 6', project: 'AI Competitive Programming Tracker', bg: '#0D0D0D', text: '#fff', accent: '#fff' },
-  { name: 'Nexathon', result: 'Top 6', project: 'HackTrack — facial recognition + geo-fencing', bg: '#CAED4C', text: '#0D0D0D', accent: '#E8341A' },
+  { name: 'GDG Hackathon', result: 'Top 6', project: 'AI Competitive Programming Tracker', bg: '#1D4ED8', text: '#fff', accent: '#CAED4C' },
+  { name: 'Nexathon', result: 'Top 6', project: 'Facial-recognition and geofencing project', bg: '#CAED4C', text: '#0D0D0D', accent: '#E8341A' },
   { name: 'Smart India Hackathon 2025', result: 'Reached Round 2', project: 'Innovation track participation', bg: '#E8341A', text: '#fff', accent: '#CAED4C' },
 ]
 
