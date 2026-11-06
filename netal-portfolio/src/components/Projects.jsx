@@ -141,8 +141,8 @@ export default function Projects() {
         ]}
         appLink={null}
         ghLink="https://github.com/Aryan-lomte05/SIH26117-Sovereign-Workbench"
-        carouselImages={[]}
-        placeholderCount={3}
+        carouselImages={['/souv1.png', '/souv2.png', '/souv3.png']}
+        placeholderCount={0}
         accentColor="#6D28D9"
         avatar={projectMarks[3]}
       />
@@ -161,8 +161,8 @@ export default function Projects() {
         ]}
         appLink={null}
         ghLink="https://github.com/Aryan-lomte05/Varuna"
-        carouselImages={[]}
-        placeholderCount={3}
+        carouselImages={['/varuna1.png']}
+        placeholderCount={0}
         accentColor="#0D0D0D"
         avatar={{ mark: 'VR', bg: '#E0F7FA' }}
       />

@@ -1,21 +1,21 @@
 const hacks = [
-  { name: 'Indradhanu — International Grand Challenge', result: 'Round 1 cleared · Round 2 in January', project: 'Global challenge participation', bg: '#CAED4C', text: '#0D0D0D', accent: '#273414' },
-  { name: 'Smart India Hackathon 2026 (Internal Round)', result: 'Ranked 2nd out of ~150 teams', project: 'VARUNA', bg: '#DCC8F2', text: '#0D0D0D', accent: '#273414' },
-  { name: 'AfterMath Hackathon', result: 'Top 12 finalist of 36/250+ teams', project: 'SaathiCare', bg: '#273414', text: '#FFFFFF', accent: '#CAED4C' },
-  { name: 'GDG Hackathon', result: 'Top 6', project: 'AI Competitive Programming Tracker', bg: '#0D0D0D', text: '#FFFFFF', accent: '#DCC8F2' },
-  { name: 'Nexathon', result: 'Top 6', project: 'Facial-recognition and geofencing project', bg: '#CAED4C', text: '#0D0D0D', accent: '#273414' },
-  { name: 'Smart India Hackathon 2025', result: 'Reached Round 2', project: 'Innovation track participation', bg: '#DCC8F2', text: '#0D0D0D', accent: '#273414' },
+  { name: 'Indradhanu — International Grand Challenge', result: 'Round 1 cleared · Round 2 in January', project: 'Global challenge participation', bg: '#0D0D0D', text: '#fff', accent: '#CAED4C' },
+  { name: 'Smart India Hackathon 2026 (Internal Round)', result: 'Ranked 2nd out of ~150 teams', project: 'VARUNA', bg: '#6D28D9', text: '#fff', accent: '#CAED4C' },
+  { name: 'AfterMath Hackathon', result: 'Top 12 finalist of 36/250+ teams', project: 'SaathiCare', bg: '#E8341A', text: '#fff', accent: '#CAED4C' },
+  { name: 'GDG Hackathon', result: 'Top 6', project: 'AI Competitive Programming Tracker', bg: '#FF8C42', text: '#fff', accent: '#fff' },
+  { name: 'Nexathon', result: 'Top 6', project: 'Facial-recognition and geofencing project', bg: '#CAED4C', text: '#0D0D0D', accent: '#E8341A' },
+  { name: 'Smart India Hackathon 2025', result: 'Reached Round 2', project: 'Innovation track participation', bg: '#0D0D0D', text: '#fff', accent: '#CAED4C' },
 ]
 
 export default function Hackathons() {
   return (
-    <section id="hackathons" style={{ padding: '7rem 4rem', background: '#0D0D0D', color: '#fff', position: 'relative', overflow: 'hidden' }}>
+    <section id="hackathons" style={{ padding: '7rem 4rem', background: '#E8341A', color: '#fff', position: 'relative', overflow: 'hidden' }}>
       <style>{`
         .hack-card:hover { transform: translateY(-6px) !important; }
       `}</style>
 
-      <div style={{ position: 'absolute', width: 400, height: 400, borderRadius: '50%', background: 'rgba(202,237,76,0.08)', top: -100, right: -80 }} />
-      <div style={{ position: 'absolute', width: 250, height: 250, borderRadius: '50%', background: 'rgba(220,200,242,0.08)', bottom: -60, left: 60 }} />
+      <div style={{ position: 'absolute', width: 400, height: 400, borderRadius: '50%', background: 'rgba(255,255,255,0.07)', top: -100, right: -80 }} />
+      <div style={{ position: 'absolute', width: 250, height: 250, borderRadius: '50%', background: 'rgba(0,0,0,0.06)', bottom: -60, left: 60 }} />
 
       <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#CAED4C', marginBottom: '0.8rem' }}>Competition Timeline</p>
       <h2 className="reveal" style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2.2rem, 5vw, 3.5rem)', fontWeight: 900, letterSpacing: '-0.02em', marginBottom: '3.5rem', color: '#fff' }}>
