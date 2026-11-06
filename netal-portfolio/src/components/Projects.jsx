@@ -129,26 +129,6 @@ export default function Projects() {
 
       <ProjectCard
         num="01"
-        badge="🥈 2nd of 90 Teams — SIH Internal"
-        badgeBg="#0D0D0D"
-        title="VARUNA"
-        date="Smart India Hackathon · Aug 2026 · Geospatial Systems & Visualization Lead"
-        stack={['Next.js 14', 'Deck.gl', 'Mapbox GL/MapLibre', 'FastAPI', 'PostgreSQL/PostGIS']}
-        bullets={[
-          'Ocean & Marine Biodiversity Data Platform — built a WebGL Deck.gl ocean map rendering 3,800+ ARGO float positions with a depth-filtering scrubber, making raw INCOIS ocean-sensor data explorable in real time',
-          'Replaced mock data with live CMLRE master CSV ingestion across the overview map and biodiversity page, and shipped species search with deep-profile simulation for real marine survey records',
-          'Generalized the biodiversity analytics dataset schema for scalable cross-species reporting, and built the proactive anomaly/early-warning alert center surfacing marine heatwave and hypoxia alerts',
-        ]}
-        appLink="#projects"
-        ghLink="https://github.com/netalgupta/VARUNA"
-        carouselImages={[]}
-        placeholderCount={3}
-        accentColor="#0D0D0D"
-        avatar={emojiAvatars[3]}
-      />
-
-      <ProjectCard
-        num="02"
         badge="🏆 SIH 2026 — PS26117"
         badgeBg="#6D28D9"
         title="Sovereign AI Workbench"
@@ -166,6 +146,26 @@ export default function Projects() {
         placeholderCount={3}
         accentColor="#6D28D9"
         avatar={emojiAvatars[4]}
+      />
+
+      <ProjectCard
+        num="02"
+        badge="🥈 2nd of ~150 Teams — SIH Internal"
+        badgeBg="#0D0D0D"
+        title="VARUNA"
+        date="Smart India Hackathon · Aug 2026 · Geospatial Systems & Visualization Lead"
+        stack={['Next.js 14', 'Deck.gl', 'Mapbox GL/MapLibre', 'FastAPI', 'PostgreSQL/PostGIS']}
+        bullets={[
+          'Ocean & Marine Biodiversity Data Platform — built a WebGL Deck.gl ocean map rendering 3,800+ ARGO float positions with a depth-filtering scrubber, making raw INCOIS ocean-sensor data explorable in real time',
+          'Replaced mock data with live CMLRE master CSV ingestion across the overview map and biodiversity page, and shipped species search with deep-profile simulation for real marine survey records',
+          'Generalized the biodiversity analytics dataset schema for scalable cross-species reporting, and built the proactive anomaly/early-warning alert center surfacing marine heatwave and hypoxia alerts',
+        ]}
+        appLink="#projects"
+        ghLink="https://github.com/netalgupta/VARUNA"
+        carouselImages={[]}
+        placeholderCount={3}
+        accentColor="#0D0D0D"
+        avatar={emojiAvatars[3]}
       />
 
       <ProjectCard

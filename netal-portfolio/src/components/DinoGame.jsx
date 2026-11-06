@@ -371,7 +371,7 @@ export default function DinoGame() {
   const medals = ['🥇', '🥈', '🥉']
 
   return (
-    <section id="game" style={{ padding: '7rem 4rem', background: '#0D0D0D', color: '#fff', position: 'relative' }}>
+    <section id="game" style={{ padding: '7rem 4rem', background: '#121212', color: '#fff', position: 'relative', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
       <style>{`
         #game .game-canvas-wrap { position: relative; }
         #game canvas { border-radius: 20px; display: block; width: 100%; max-width: ${W}px; cursor: pointer; }

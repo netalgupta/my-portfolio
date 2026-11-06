@@ -1,8 +1,11 @@
 const hacks = [
-  { trophy: '🏆', name: 'Smart India Hackathon (Internal Round)', result: 'Ranked 2nd of 90 teams', project: 'VARUNA', bg: '#0D0D0D', text: '#fff', accent: '#CAED4C' },
-  { trophy: '🏆', name: 'AfterMath Hackathon', result: 'Top 12 finalist of 36/250+ teams', project: 'SaathiCare', bg: '#E8341A', text: '#fff', accent: '#CAED4C' },
+  { trophy: '🚀', name: 'Indradhanu — International Grand Challenge', result: 'Round 1 cleared • Round 2 in January', project: 'Global challenge participation', bg: '#0D0D0D', text: '#fff', accent: '#CAED4C' },
+  { trophy: '🏆', name: 'Smart India Hackathon 2026 (National)', result: 'Finalist — PS26117 (MRPL)', project: 'Sovereign On-Premise Agentic AI Workbench', bg: '#6D28D9', text: '#fff', accent: '#CAED4C' },
+  { trophy: '🥈', name: 'Smart India Hackathon 2025', result: 'Reached Round 2', project: 'Innovation track participation', bg: '#E8341A', text: '#fff', accent: '#CAED4C' },
+  { trophy: '🏆', name: 'Smart India Hackathon 2026 (Internal Round)', result: 'Ranked 2nd out of ~150 teams', project: 'VARUNA', bg: '#0D0D0D', text: '#fff', accent: '#CAED4C' },
+  { trophy: '🏆', name: 'AfterMath Hackathon', result: 'Top 12 finalist of 36/250+ teams', project: 'SaathiCare', bg: '#FF8C42', text: '#fff', accent: '#CAED4C' },
   { trophy: '🥇', name: 'Nexathon', result: 'Top 6', project: 'HackTrack — facial recognition + geo-fencing', bg: '#CAED4C', text: '#0D0D0D', accent: '#E8341A' },
-  { trophy: '🤖', name: 'GDG Hackathon', result: 'Top 6', project: 'AI Competitive Programming Tracker', bg: '#FF8C42', text: '#fff', accent: '#fff' },
+  { trophy: '🤖', name: 'GDG Hackathon', result: 'Top 6', project: 'AI Competitive Programming Tracker', bg: '#0D0D0D', text: '#fff', accent: '#fff' },
 ]
 
 export default function Hackathons() {
