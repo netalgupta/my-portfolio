@@ -9,9 +9,9 @@ const DINO_W = 44
 const DINO_H = 52
 const GRAVITY = 0.6
 const JUMP_V = -13
-const INITIAL_SPEED = 5
-const SPEED_INCREMENT = 0.0012
-const MAX_SPEED = 14
+const INITIAL_SPEED = 4
+const SPEED_INCREMENT = 0.0006
+const MAX_SPEED = 8
 
 // Obstacle shapes: { w, h, label, color, emoji }
 const OBSTACLE_TYPES = [
@@ -376,6 +376,8 @@ export default function DinoGame() {
         #game .game-canvas-wrap { position: relative; }
         #game canvas { border-radius: 20px; display: block; width: 100%; max-width: ${W}px; cursor: pointer; }
         #game .game-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 20px; }
+        #game .game-dead-panel { max-width: ${W}px; margin: 1.25rem auto 0; padding: 1.5rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.8rem; }
+        #game .game-dead-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.6rem; }
         #game .lb-row:nth-child(even) { background: rgba(255,255,255,0.03); }
         @media (max-width: 860px) { #game { padding: 5rem 1.5rem; } }
         @media (max-width: 540px) { #game { padding: 4rem 1rem; } }
@@ -450,21 +452,21 @@ export default function DinoGame() {
           </div>
         )}
 
-        {/* DEAD overlay */}
-        {phase === 'dead' && (
-          <div className="game-overlay" style={{ background: 'rgba(13,13,13,0.88)', backdropFilter: 'blur(8px)' }}>
+      </div>
+
+      {phase === 'dead' && (
+        <div className="game-dead-panel" role="group" aria-label="Final score and leaderboard options">
             <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.4rem', fontWeight: 900, marginBottom: '0.3rem', color: '#E8341A' }}>
               Crashed!
             </h3>
             <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.82rem', marginBottom: '1rem' }}>
               A bug got you. Final score:
             </p>
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '2.8rem', fontWeight: 700, color: '#CAED4C', marginBottom: '1.5rem' }}>
+            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '2.2rem', fontWeight: 700, color: '#CAED4C' }}>
               {score.toString().padStart(5, '0')}
             </div>
 
-            {/* Name entry */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem', marginBottom: '1.4rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
               <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.6)' }}>Save your score to the leaderboard:</p>
               <input
                 className="name-input"
@@ -474,7 +476,7 @@ export default function DinoGame() {
                 onKeyDown={e => e.key === 'Enter' && handleSubmit()}
                 maxLength={20}
               />
-              <div style={{ display: 'flex', gap: '0.6rem' }}>
+              <div className="game-dead-actions">
                 <button className="dino-btn dino-btn-primary" onClick={handleSubmit} style={{ fontSize: '0.82rem', padding: '0.6rem 1.4rem' }}>
                   Save Score
                 </button>
@@ -487,9 +489,8 @@ export default function DinoGame() {
             <button className="dino-btn dino-btn-secondary" onClick={startGame} style={{ fontSize: '0.82rem' }}>
               Try Again
             </button>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
 
       {/* Leaderboard */}
       {phase === 'leaderboard' && (
