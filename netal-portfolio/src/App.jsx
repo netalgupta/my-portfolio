@@ -9,6 +9,7 @@ import Projects from './components/Projects'
 import Hackathons from './components/Hackathons'
 import Experience from './components/Experience'
 import Certifications from './components/Certifications'
+import DinoGame from './components/DinoGame'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
@@ -34,6 +35,7 @@ export default function App() {
       <Hackathons />
       <Experience />
       <Certifications />
+      <DinoGame />
       <Contact />
       <Footer />
     </>
