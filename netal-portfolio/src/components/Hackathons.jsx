@@ -1,20 +1,18 @@
 const hacks = [
-  { trophy: '🚀', name: 'Indradhanu — International Grand Challenge', result: 'Round 1 cleared • Round 2 in January', project: 'Global challenge participation', bg: '#0D0D0D', text: '#fff', accent: '#CAED4C' },
-  { trophy: '🏆', name: 'Smart India Hackathon 2026 (National)', result: 'Finalist — PS26117 (MRPL)', project: 'Sovereign On-Premise Agentic AI Workbench', bg: '#6D28D9', text: '#fff', accent: '#CAED4C' },
-  { trophy: '🥈', name: 'Smart India Hackathon 2025', result: 'Reached Round 2', project: 'Innovation track participation', bg: '#E8341A', text: '#fff', accent: '#CAED4C' },
-  { trophy: '🏆', name: 'Smart India Hackathon 2026 (Internal Round)', result: 'Ranked 2nd out of ~150 teams', project: 'VARUNA', bg: '#0D0D0D', text: '#fff', accent: '#CAED4C' },
-  { trophy: '🏆', name: 'AfterMath Hackathon', result: 'Top 12 finalist of 36/250+ teams', project: 'SaathiCare', bg: '#FF8C42', text: '#fff', accent: '#CAED4C' },
-  { trophy: '🥇', name: 'Nexathon', result: 'Top 6', project: 'HackTrack — facial recognition + geo-fencing', bg: '#CAED4C', text: '#0D0D0D', accent: '#E8341A' },
-  { trophy: '🤖', name: 'GDG Hackathon', result: 'Top 6', project: 'AI Competitive Programming Tracker', bg: '#0D0D0D', text: '#fff', accent: '#fff' },
+  { name: 'Indradhanu — International Grand Challenge', result: 'Round 1 cleared · Round 2 in January', project: 'Global challenge participation', bg: '#0D0D0D', text: '#fff', accent: '#CAED4C' },
+  { name: 'Smart India Hackathon 2026 (National)', result: 'Finalist — PS26117 (MRPL)', project: 'Sovereign On-Premise Agentic AI Workbench', bg: '#6D28D9', text: '#fff', accent: '#CAED4C' },
+  { name: 'Smart India Hackathon 2025', result: 'Reached Round 2', project: 'Innovation track participation', bg: '#E8341A', text: '#fff', accent: '#CAED4C' },
+  { name: 'Smart India Hackathon 2026 (Internal Round)', result: 'Ranked 2nd out of ~150 teams', project: 'VARUNA', bg: '#0D0D0D', text: '#fff', accent: '#CAED4C' },
+  { name: 'AfterMath Hackathon', result: 'Top 12 finalist of 36/250+ teams', project: 'SaathiCare', bg: '#FF8C42', text: '#fff', accent: '#CAED4C' },
+  { name: 'Nexathon', result: 'Top 6', project: 'HackTrack — facial recognition + geo-fencing', bg: '#CAED4C', text: '#0D0D0D', accent: '#E8341A' },
+  { name: 'GDG Hackathon', result: 'Top 6', project: 'AI Competitive Programming Tracker', bg: '#0D0D0D', text: '#fff', accent: '#fff' },
 ]
 
 export default function Hackathons() {
   return (
     <section id="hackathons" style={{ padding: '7rem 4rem', background: '#E8341A', color: '#fff', position: 'relative', overflow: 'hidden' }}>
       <style>{`
-        @keyframes trophySpin { 0%,100%{transform:rotate(-8deg) scale(1)} 50%{transform:rotate(8deg) scale(1.1)} }
-        .hack-card:hover .trophy-icon { animation: trophySpin 0.6s ease infinite !important; }
-        .hack-card:hover { transform: translateY(-10px) rotate(-1deg) !important; }
+        .hack-card:hover { transform: translateY(-6px) !important; }
       `}</style>
 
       {/* deco blobs */}
@@ -35,7 +33,7 @@ export default function Hackathons() {
             cursor: 'default',
             boxShadow: '0 4px 24px rgba(0,0,0,0.12)',
           }}>
-            <div className="trophy-icon" style={{ fontSize: '2.5rem', marginBottom: '1rem', display: 'inline-block' }}>{h.trophy}</div>
+            <div style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.12em', opacity: 0.65, marginBottom: '1rem' }}>ENTRY {String(i + 1).padStart(2, '0')}</div>
             <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.4rem' }}>{h.name}</div>
             <div style={{ fontSize: '0.88rem', fontWeight: 800, color: h.accent, marginBottom: '0.5rem' }}>{h.result}</div>
             <div style={{ fontSize: '0.82rem', opacity: 0.75 }}>{h.project}</div>

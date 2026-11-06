@@ -1,7 +1,7 @@
 const certs = [
-  { icon: '🎓', name: 'Google Gemini Certified Student', issuer: 'Google for Education', date: 'May 2026 – May 2029', bg: '#CAED4C', text: '#0D0D0D' },
-  { icon: '🏢', name: 'Walmart Global Tech Advanced Software Engineering', issuer: 'Forage · Python ETL pipelines, data structures, UML/ERD', date: '2025', bg: '#1A1A1A', text: '#fff', border: '1.5px solid rgba(255,255,255,0.12)' },
-  { icon: '💼', name: 'Deloitte Technology Job Simulation', issuer: 'Forage · Telemetry data, system design, software proposals', date: '2025', bg: '#E8341A', text: '#fff' },
+  { mark: 'G', name: 'Google Gemini Certified Student', issuer: 'Google for Education', date: 'May 2026 – May 2029', bg: '#CAED4C', text: '#0D0D0D' },
+  { mark: 'W', name: 'Walmart Global Tech Advanced Software Engineering', issuer: 'Forage · Python ETL pipelines, data structures, UML/ERD', date: '2025', bg: '#1A1A1A', text: '#fff', border: '1.5px solid rgba(255,255,255,0.12)' },
+  { mark: 'D', name: 'Deloitte Technology Job Simulation', issuer: 'Forage · Telemetry data, system design, software proposals', date: '2025', bg: '#E8341A', text: '#fff' },
 ]
 
 export default function Certifications() {
@@ -21,7 +21,7 @@ export default function Certifications() {
             onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-8px) rotate(1deg)'; e.currentTarget.style.boxShadow = '0 24px 48px rgba(0,0,0,0.15)' }}
             onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = 'none' }}
           >
-            <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{c.icon}</div>
+            <div style={{ fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.12em', marginBottom: '1rem', opacity: 0.75 }}>{c.mark}</div>
             <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.4rem' }}>{c.name}</div>
             <div style={{ fontSize: '0.82rem', opacity: 0.7, marginBottom: '0.3rem', fontWeight: 600 }}>{c.issuer}</div>
             <div style={{ fontSize: '0.75rem', opacity: 0.6 }}>{c.date}</div>

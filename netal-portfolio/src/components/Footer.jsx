@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer style={{ background: '#0D0D0D', color: 'rgba(255,255,255,0.35)', textAlign: 'center', padding: '2rem', fontSize: '0.82rem' }}>
       <p>
-        Built with ❤️ by{' '}
+        Built by{' '}
         <span style={{ color: '#CAED4C', fontWeight: 700 }}>Netal Gupta</span>
         {' · '}2026
         {' · '}

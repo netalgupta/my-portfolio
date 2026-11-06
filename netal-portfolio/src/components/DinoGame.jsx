@@ -368,7 +368,7 @@ export default function DinoGame() {
     if (phase === 'playing') jump()
   }
 
-  const medals = ['🥇', '🥈', '🥉']
+  const medals = ['1', '2', '3']
 
   return (
     <section id="game" style={{ padding: '7rem 4rem', background: '#121212', color: '#fff', position: 'relative', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
@@ -434,7 +434,7 @@ export default function DinoGame() {
         {/* IDLE overlay */}
         {phase === 'idle' && (
           <div className="game-overlay" style={{ background: 'rgba(13,13,13,0.82)', backdropFilter: 'blur(8px)' }}>
-            <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🦕</div>
+            <div style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.15em', color: '#CAED4C', marginBottom: '1rem' }}>READY TO RUN</div>
             <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.6rem', fontWeight: 900, marginBottom: '0.5rem' }}>
               Debug Runner
             </h3>
@@ -442,7 +442,7 @@ export default function DinoGame() {
               Dodge the bugs, errors & crashes.<br />How long can you survive?
             </p>
             <button className="dino-btn dino-btn-primary" onClick={startGame}>
-              🚀 Start Running
+              Start Running
             </button>
             <p style={{ marginTop: '1rem', fontSize: '0.75rem', color: 'rgba(255,255,255,0.3)' }}>
               Space / ↑ Arrow / Tap to jump
@@ -453,7 +453,6 @@ export default function DinoGame() {
         {/* DEAD overlay */}
         {phase === 'dead' && (
           <div className="game-overlay" style={{ background: 'rgba(13,13,13,0.88)', backdropFilter: 'blur(8px)' }}>
-            <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>💥</div>
             <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.4rem', fontWeight: 900, marginBottom: '0.3rem', color: '#E8341A' }}>
               Crashed!
             </h3>
@@ -477,16 +476,16 @@ export default function DinoGame() {
               />
               <div style={{ display: 'flex', gap: '0.6rem' }}>
                 <button className="dino-btn dino-btn-primary" onClick={handleSubmit} style={{ fontSize: '0.82rem', padding: '0.6rem 1.4rem' }}>
-                  🏆 Save Score
+                  Save Score
                 </button>
                 <button className="dino-btn dino-btn-secondary" onClick={handleAnon} style={{ fontSize: '0.82rem', padding: '0.6rem 1.2rem' }}>
-                  👻 Anonymous
+                  Anonymous
                 </button>
               </div>
             </div>
 
             <button className="dino-btn dino-btn-secondary" onClick={startGame} style={{ fontSize: '0.82rem' }}>
-              🔄 Try Again
+              Try Again
             </button>
           </div>
         )}
@@ -497,20 +496,20 @@ export default function DinoGame() {
         <div style={{ maxWidth: W, margin: '2rem auto 0', background: 'rgba(255,255,255,0.04)', borderRadius: 20, border: '1px solid rgba(255,255,255,0.08)', overflow: 'hidden' }}>
           <div style={{ padding: '1.6rem 2rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
             <div>
-              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.3rem', fontWeight: 700 }}>🏆 Leaderboard</h3>
+              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.3rem', fontWeight: 700 }}>Leaderboard</h3>
               <p style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.4)', marginTop: '0.2rem' }}>
                 Your score: <strong style={{ color: '#CAED4C' }}>{score.toString().padStart(5, '0')}</strong>
                 {playerName && <span> · Saved as <strong style={{ color: '#CAED4C' }}>{playerName}</strong></span>}
               </p>
             </div>
             <button className="dino-btn dino-btn-primary" onClick={startGame} style={{ fontSize: '0.82rem', padding: '0.6rem 1.4rem' }}>
-              🔄 Play Again
+              Play Again
             </button>
           </div>
 
           {leaderboard.length === 0 ? (
             <div style={{ padding: '2rem', textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontSize: '0.88rem' }}>
-              No scores yet. Be the first! 🦕
+              No scores yet. Be the first to set one.
             </div>
           ) : (
             leaderboard.map((entry, i) => (
