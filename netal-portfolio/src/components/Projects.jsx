@@ -55,6 +55,7 @@ const emojiAvatars = [
   { emoji: '⚡', bg: '#F0FFF0', label: 'CP Tracker' },
   { emoji: '👁️', bg: '#FFF0E6', label: 'HackTrack' },
   { emoji: '🌊', bg: '#E0F7FA', label: 'VARUNA' },
+  { emoji: '🏭', bg: '#F3E8FF', label: 'SIH Workbench' },
 ]
 
 function ProjectCard({ num, badge, badgeBg, title, date, stack, bullets, appLink, ghLink, carouselImages, placeholderCount = 2, accentColor, avatar }) {
@@ -128,27 +129,47 @@ export default function Projects() {
 
       <ProjectCard
         num="01"
-        badge="🥈 2nd of 90 Teams"
+        badge="🥈 2nd of 90 Teams — SIH Internal"
         badgeBg="#0D0D0D"
         title="VARUNA"
-        date="Smart India Hackathon · Geospatial Systems & Visualization Lead"
+        date="Smart India Hackathon · Aug 2026 · Geospatial Systems & Visualization Lead"
         stack={['Next.js 14', 'Deck.gl', 'Mapbox GL/MapLibre', 'FastAPI', 'PostgreSQL/PostGIS']}
         bullets={[
-          'Ocean & Marine Biodiversity Data Platform',
-          'Built a WebGL Deck.gl ocean map rendering 3,800+ ARGO float positions with a depth-filtering scrubber',
-          'Replaced mock data with live CMLRE master CSV ingestion across the overview map and biodiversity page',
-          'Shipped species search with deep-profile simulation, generalized biodiversity analytics schemas, and built an anomaly/early-warning alert center for marine heatwave and hypoxia alerts',
+          'Ocean & Marine Biodiversity Data Platform — built a WebGL Deck.gl ocean map rendering 3,800+ ARGO float positions with a depth-filtering scrubber, making raw INCOIS ocean-sensor data explorable in real time',
+          'Replaced mock data with live CMLRE master CSV ingestion across the overview map and biodiversity page, and shipped species search with deep-profile simulation for real marine survey records',
+          'Generalized the biodiversity analytics dataset schema for scalable cross-species reporting, and built the proactive anomaly/early-warning alert center surfacing marine heatwave and hypoxia alerts',
         ]}
         appLink="#projects"
         ghLink="https://github.com/netalgupta/VARUNA"
         carouselImages={[]}
-        placeholderCount={1}
+        placeholderCount={3}
         accentColor="#0D0D0D"
         avatar={emojiAvatars[3]}
       />
 
       <ProjectCard
         num="02"
+        badge="🏆 SIH 2026 — PS26117"
+        badgeBg="#6D28D9"
+        title="Sovereign AI Workbench"
+        date="Smart India Hackathon 2026 · Team Ctrl Alt Defeat · Frontend — Sources, Citations & Knowledge Graph"
+        stack={['React', 'Vite', 'FastAPI', 'LangGraph', 'Neo4j', 'FAISS', 'Docker', 'Qwen2.5', 'Ollama']}
+        bullets={[
+          'Fully sovereign, offline, multi-model agentic AI workbench for MRPL (Mangalore Refinery & Petrochemicals Ltd) — 15 MMTPA refinery — zero cloud dependency, all models run locally on a single RTX 4060',
+          'Built the interactive Neo4j knowledge graph explorer with multi-hop traversal, inline PDF source preview with passage highlights, and real-time agent reasoning stream (173 events/turn via WebSocket)',
+          'Built the Retrieval Observatory — chunk-level confidence scores, BM25 vs dense scoring breakdown, retrieval trace UI — and 4 registry tools for graph/retrieval transparency',
+          '700+ passing tests, 15/15 PS requirements covered, 95/98 functional checks passed; adversarial approval gate 6/6 denied (token reuse, payload swap, expiry)',
+        ]}
+        appLink="#projects"
+        ghLink="https://github.com/Aryan-lomte05/SIH26117-Sovereign-Workbench"
+        carouselImages={[]}
+        placeholderCount={3}
+        accentColor="#6D28D9"
+        avatar={emojiAvatars[4]}
+      />
+
+      <ProjectCard
+        num="03"
         badge="🏆 Top 12 / 250+ Teams"
         badgeBg="#E8341A"
         title="SaathiCare"
@@ -169,7 +190,7 @@ export default function Projects() {
       />
 
       <ProjectCard
-        num="03"
+        num="04"
         badge="🏆 Top 6 — GDG Hackathon"
         badgeBg="#0D0D0D"
         title="AI CP Tracker"
@@ -189,7 +210,7 @@ export default function Projects() {
       />
 
       <ProjectCard
-        num="04"
+        num="05"
         badge="🥇 Top 6 — Nexathon"
         badgeBg="#FF8C42"
         title="HackTrack"
