@@ -4,6 +4,7 @@ const links = ['About', 'Skills', 'Projects', 'Hackathons', 'Experience', 'Certi
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('portfolio-theme') === 'dark')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
@@ -11,35 +12,56 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    document.documentElement.dataset.theme = darkMode ? 'dark' : 'light'
+    localStorage.setItem('portfolio-theme', darkMode ? 'dark' : 'light')
+  }, [darkMode])
+
   return (
     <nav style={{
       position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 1000,
       padding: '1.2rem 3rem',
       display: 'flex', justifyContent: 'space-between', alignItems: 'center',
       flexWrap: 'wrap', rowGap: '0.75rem',
-      background: scrolled ? 'rgba(250,247,242,0.94)' : 'transparent',
+      background: scrolled ? (darkMode ? 'rgba(18,18,18,0.94)' : 'rgba(250,247,242,0.94)') : 'transparent',
       backdropFilter: scrolled ? 'blur(14px)' : 'none',
-      borderBottom: scrolled ? '1px solid rgba(0,0,0,0.06)' : 'none',
+      borderBottom: scrolled ? `1px solid ${darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.06)'}` : 'none',
       transition: 'all 0.4s',
     }}>
-      <a href="#hero" style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 900, color: '#0D0D0D', textDecoration: 'none' }}>
+      <a href="#hero" style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 900, color: darkMode ? '#fff' : '#0D0D0D', textDecoration: 'none' }}>
         NG<span style={{ color: '#E8341A' }}>.</span>
       </a>
       <ul style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', listStyle: 'none', margin: 0, padding: 0 }}>
         {links.map(l => (
           <li key={l}>
             <a href={`#${l.toLowerCase()}`} style={{
-              textDecoration: 'none', color: '#0D0D0D',
+              textDecoration: 'none', color: darkMode ? '#f2f2f2' : '#0D0D0D',
               fontSize: '0.82rem', fontWeight: 600,
               letterSpacing: '0.06em', textTransform: 'uppercase',
               position: 'relative',
             }}
               onMouseEnter={e => e.target.style.color = '#E8341A'}
-              onMouseLeave={e => e.target.style.color = '#0D0D0D'}
+              onMouseLeave={e => e.target.style.color = darkMode ? '#f2f2f2' : '#0D0D0D'}
             >{l}</a>
           </li>
         ))}
       </ul>
+      <button
+        type="button"
+        aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode`}
+        aria-pressed={darkMode}
+        onClick={() => setDarkMode(mode => !mode)}
+        style={{
+          padding: '0.5rem 0.8rem', borderRadius: 100,
+          border: `1px solid ${darkMode ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.15)'}`,
+          background: darkMode ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.65)',
+          color: darkMode ? '#fff' : '#0D0D0D',
+          fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.75rem', fontWeight: 700,
+          cursor: 'pointer',
+        }}
+      >
+        {darkMode ? 'Light mode' : 'Dark mode'}
+      </button>
     </nav>
   )
 }

@@ -10,6 +10,7 @@ import Hackathons from './components/Hackathons'
 import Experience from './components/Experience'
 import Certifications from './components/Certifications'
 import DinoGame from './components/DinoGame'
+import ScrollUtilities from './components/ScrollUtilities'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
@@ -27,6 +28,7 @@ export default function App() {
     <>
       <Cursor />
       <Navbar />
+      <ScrollUtilities />
       <Hero />
       <Marquee />
       <About />

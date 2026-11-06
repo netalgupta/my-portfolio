@@ -29,6 +29,103 @@ body {
   overflow-x: hidden;
 }
 
+html[data-theme='dark'] body {
+  background: #121212;
+  color: #f2f2f2;
+}
+
+html[data-theme='dark'] ::-webkit-scrollbar-track {
+  background: #171717;
+}
+
+html[data-theme='dark'] section[id]:not(#skills):not(#game) {
+  background-color: #171717 !important;
+}
+
+html[data-theme='dark'] section[id] > h2 {
+  color: #f2f2f2 !important;
+}
+
+html[data-theme='dark'] #experience,
+html[data-theme='dark'] #projects {
+  color: #f2f2f2;
+}
+
+html[data-theme='dark'] #hero h1 {
+  color: #f2f2f2 !important;
+}
+
+html[data-theme='dark'] #hero .hero-left > p {
+  color: #ccc !important;
+}
+
+html[data-theme='dark'] #hero .hero-buttons a:last-child {
+  color: #f2f2f2 !important;
+  border-color: rgba(255,255,255,0.3) !important;
+}
+
+html[data-theme='dark'] #about .about-grid h2 {
+  color: #f2f2f2 !important;
+}
+
+html[data-theme='dark'] #about .about-left p,
+html[data-theme='dark'] #contact > p:not(:first-of-type) {
+  color: #ccc !important;
+}
+
+html[data-theme='dark'] #contact h2 {
+  color: #f2f2f2 !important;
+}
+
+html[data-theme='dark'] #contact .social-link-btn {
+  color: #f2f2f2 !important;
+  border-color: rgba(255,255,255,0.25) !important;
+}
+
+html[data-theme='dark'] .project-card-content {
+  background: #222 !important;
+  border-color: rgba(255,255,255,0.1) !important;
+  color: #f2f2f2 !important;
+}
+
+html[data-theme='dark'] .project-card-content .project-stack span {
+  background: #363636 !important;
+  color: #eee !important;
+}
+
+html[data-theme='dark'] .project-card-content ul {
+  color: #ccc !important;
+}
+
+html[data-theme='dark'] .project-card-content .project-actions a:last-child {
+  border-color: rgba(255,255,255,0.25) !important;
+  color: #f2f2f2 !important;
+}
+
+html[data-theme='dark'] .tl-role {
+  color: #f2f2f2;
+}
+
+html[data-theme='dark'] .tl-company {
+  color: #aaa !important;
+}
+
+html[data-theme='dark'] .tl-desc {
+  color: #ccc !important;
+}
+
+html[data-theme='dark'] #certs {
+  color: #f2f2f2 !important;
+}
+
+html[data-theme='dark'] #certs h2 {
+  color: #f2f2f2 !important;
+}
+
+html[data-theme='dark'] nav a {
+  color: #f2f2f2;
+}
+
 p, h1, h2, h3, h4, h5, h6, li, a, span {
   overflow-wrap: anywhere;
   word-break: break-word;

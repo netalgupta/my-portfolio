@@ -17,7 +17,7 @@ function Carousel({ images, placeholderCount = 0 }) {
         <img key={idx} src={all[idx]} className="carousel-img" alt={`screenshot ${idx + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
       ) : (
         <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#1a1a1a', color: 'rgba(255,255,255,0.2)', gap: 8 }}>
-          <div style={{ fontSize: '2.5rem' }}>📸</div>
+          <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.12em' }}>PROJECT PREVIEW</div>
           <p style={{ fontSize: '0.85rem', fontWeight: 600 }}>Add your screenshot here</p>
           <p style={{ fontSize: '0.72rem', opacity: 0.5 }}>Drop image in /public/ and update src</p>
         </div>
@@ -50,12 +50,12 @@ function Carousel({ images, placeholderCount = 0 }) {
   )
 }
 
-const emojiAvatars = [
-  { emoji: '🧠', bg: '#FFE4E1', label: 'SaathiCare' },
-  { emoji: '⚡', bg: '#F0FFF0', label: 'CP Tracker' },
-  { emoji: '👁️', bg: '#FFF0E6', label: 'HackTrack' },
-  { emoji: '🌊', bg: '#E0F7FA', label: 'VARUNA' },
-  { emoji: '🏭', bg: '#F3E8FF', label: 'SIH Workbench' },
+const projectMarks = [
+  { mark: 'SC', bg: '#FFE4E1', label: 'SaathiCare' },
+  { mark: 'CP', bg: '#F0FFF0', label: 'CP Tracker' },
+  { mark: 'HT', bg: '#FFF0E6', label: 'HackTrack' },
+  { mark: 'VR', bg: '#E0F7FA', label: 'VARUNA' },
+  { mark: 'AI', bg: '#F3E8FF', label: 'SIH Workbench' },
 ]
 
 function ProjectCard({ num, badge, badgeBg, title, date, stack, bullets, appLink, ghLink, carouselImages, placeholderCount = 2, accentColor, avatar }) {
@@ -75,7 +75,7 @@ function ProjectCard({ num, badge, badgeBg, title, date, stack, bullets, appLink
         >
           {/* Avatar deco */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1rem' }}>
-            <div style={{ width: 52, height: 52, borderRadius: 16, background: avatar.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.8rem', flexShrink: 0 }}>{avatar.emoji}</div>
+            <div style={{ width: 52, height: 52, borderRadius: 16, background: avatar.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.04em', flexShrink: 0 }}>{avatar.mark}</div>
             <span style={{ background: badgeBg, color: badgeBg === '#0D0D0D' ? '#CAED4C' : '#fff', fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.3rem 0.9rem', borderRadius: 100 }}>{badge}</span>
           </div>
           <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.7rem', fontWeight: 700, marginBottom: '0.3rem', lineHeight: 1.2 }}>{title}</h3>
@@ -93,7 +93,7 @@ function ProjectCard({ num, badge, badgeBg, title, date, stack, bullets, appLink
               App Link
             </a>
             <a href={ghLink} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', padding: '0.55rem 1.1rem', border: '1.5px solid rgba(0,0,0,0.15)', color: '#0D0D0D', borderRadius: 100, textDecoration: 'none', fontSize: '0.82rem', fontWeight: 700, transition: 'all 0.2s' }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#0D0D0D'; e.currentTarget.style.color = '#fff' }} onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#0D0D0D' }}>⌥ GitHub</a>
+              onMouseEnter={e => { e.currentTarget.style.background = '#0D0D0D'; e.currentTarget.style.color = '#fff' }} onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#0D0D0D' }}>              GitHub</a>
           </div>
         </div>
       </div>
@@ -129,7 +129,7 @@ export default function Projects() {
 
       <ProjectCard
         num="01"
-        badge="🏆 SIH 2026 — PS26117"
+        badge="SIH 2026 — PS26117"
         badgeBg="#6D28D9"
         title="Sovereign AI Workbench"
         date="Smart India Hackathon 2026 · Team Ctrl Alt Defeat · Frontend — Sources, Citations & Knowledge Graph"
@@ -145,12 +145,12 @@ export default function Projects() {
         carouselImages={[]}
         placeholderCount={3}
         accentColor="#6D28D9"
-        avatar={emojiAvatars[4]}
+        avatar={projectMarks[4]}
       />
 
       <ProjectCard
         num="02"
-        badge="🥈 2nd of ~150 Teams — SIH Internal"
+        badge="2nd of ~150 Teams — SIH Internal"
         badgeBg="#0D0D0D"
         title="VARUNA"
         date="Smart India Hackathon · Aug 2026 · Geospatial Systems & Visualization Lead"
@@ -165,12 +165,12 @@ export default function Projects() {
         carouselImages={[]}
         placeholderCount={3}
         accentColor="#0D0D0D"
-        avatar={emojiAvatars[3]}
+        avatar={projectMarks[3]}
       />
 
       <ProjectCard
         num="03"
-        badge="🏆 Top 12 / 250+ Teams"
+        badge="Top 12 / 250+ Teams"
         badgeBg="#E8341A"
         title="SaathiCare"
         date="Feb 2026 · AfterMath Hackathon · Team Lead"
@@ -186,12 +186,12 @@ export default function Projects() {
         carouselImages={saathiScreens}
         placeholderCount={0}
         accentColor="#E8341A"
-        avatar={emojiAvatars[0]}
+        avatar={projectMarks[0]}
       />
 
       <ProjectCard
         num="04"
-        badge="🏆 Top 6 — GDG Hackathon"
+        badge="Top 6 — GDG Hackathon"
         badgeBg="#0D0D0D"
         title="AI CP Tracker"
         date="Dec 2025 · GDG Hackathon"
@@ -206,12 +206,12 @@ export default function Projects() {
         carouselImages={['/cplp.png','/cp1.png', '/cp2.png', '/cp3.png', '/cp4.png']}
         placeholderCount={0}
         accentColor="#CAED4C"
-        avatar={emojiAvatars[1]}
+        avatar={projectMarks[1]}
       />
 
       <ProjectCard
         num="05"
-        badge="🥇 Top 6 — Nexathon"
+        badge="Top 6 — Nexathon"
         badgeBg="#FF8C42"
         title="HackTrack"
         date="Dec 2025 · Nexathon"
@@ -225,7 +225,7 @@ export default function Projects() {
         carouselImages={['/ht1.png', 'ht2.png', 'ht3.png']}
         placeholderCount={0}
         accentColor="#FF8C42"
-        avatar={emojiAvatars[2]}
+        avatar={projectMarks[2]}
       />
 
     </section>
