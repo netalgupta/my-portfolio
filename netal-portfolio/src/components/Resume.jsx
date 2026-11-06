@@ -11,23 +11,36 @@ export default function Resume() {
           <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#E8341A', marginBottom: '0.8rem' }}>Resume</p>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 900, marginBottom: '0.8rem' }}>My experience, at a glance.</h2>
           <p style={{ color: '#666', fontSize: '0.9rem', lineHeight: 1.7, maxWidth: 560 }}>
-            Add your resume PDF as <code>resume.pdf</code> in the public folder to make it available here.
+            View or download my latest resume.
           </p>
         </div>
-        <button
-          type="button"
-          disabled
-          aria-label="Resume PDF will be available after adding public/resume.pdf"
-          style={{
-            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-            padding: '0.85rem 1.5rem', borderRadius: 100,
-            border: 'none', background: '#0D0D0D', color: '#fff',
-            fontSize: '0.88rem', fontWeight: 700, whiteSpace: 'nowrap',
-            opacity: 0.6, cursor: 'not-allowed',
-          }}
-        >
-          Resume PDF coming soon
-        </button>
+        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+          <a
+            href="/Netal_Resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              padding: '0.85rem 1.5rem', borderRadius: 100,
+              background: '#0D0D0D', color: '#fff', textDecoration: 'none',
+              fontSize: '0.88rem', fontWeight: 700, whiteSpace: 'nowrap',
+            }}
+          >
+            View Resume
+          </a>
+          <a
+            href="/Netal_Resume.pdf"
+            download="Netal_Resume.pdf"
+            style={{
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              padding: '0.85rem 1.5rem', borderRadius: 100,
+              border: '1px solid rgba(13,13,13,0.2)', color: '#0D0D0D',
+              textDecoration: 'none', fontSize: '0.88rem', fontWeight: 700, whiteSpace: 'nowrap',
+            }}
+          >
+            Download PDF
+          </a>
+        </div>
       </div>
     </section>
   )
