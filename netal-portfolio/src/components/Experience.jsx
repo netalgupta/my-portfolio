@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 
 const items = [
   { date: 'July 2026 – Present', role: 'ML Intern', company: 'Inhouse', desc: 'Building virtual try-on and fit-intelligence systems for accurate, real-time virtual apparel fitting.', tag: 'CURRENT', tagBg: '#CAED4C', tagColor: '#0D0D0D', avatar: 'ML' },
-  { date: 'July 2026 – Present', role: 'Creative Head', company: 'KJSSE ACM Student Chapter', desc: 'Leading creative direction, visual communication, and event branding for the student chapter.', tag: 'CURRENT', tagBg: '#CAED4C', tagColor: '#0D0D0D', avatar: 'ACM' },
+  { date: 'July 2026 – Present', role: 'Creative Head', company: 'KJSSE ACM Student Chapter', desc: 'Led creative direction and built a collaborative, well-coordinated team through clear communication and regular team-building. Grew Instagram reach to 50.8K+ and achieved 22K views on the top-performing Reel.', tag: 'CURRENT', tagBg: '#CAED4C', tagColor: '#0D0D0D', avatar: 'ACM' },
   { date: 'Jun 2026 – Jul 2026', role: 'Software Development Intern', company: 'SWDC — Software Development Working Committee', desc: 'Developed cross-platform mobile applications with Flutter/Dart; collaborated on full-stack feature development and evaluated frameworks to improve performance and UX.', avatar: 'SW' },
   { date: 'Apr 2026', role: 'Campus Ambassador', company: 'Internshala', desc: 'Drove student outreach and platform adoption through targeted campaigns and peer engagement.', avatar: 'IA' },
   { date: 'Aug – Sept 2025', role: 'Social Media & Marketing Intern', company: 'Fostride', desc: 'Trend-driven short-form content achieving 2K–4.5K+ views per reel. End-to-end creative production from ideation to publishing.', avatar: 'FM' },

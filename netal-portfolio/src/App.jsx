@@ -8,6 +8,7 @@ import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Hackathons from './components/Hackathons'
 import Experience from './components/Experience'
+import Resume from './components/Resume'
 import Certifications from './components/Certifications'
 import DinoGame from './components/DinoGame'
 import ScrollUtilities from './components/ScrollUtilities'
@@ -36,6 +37,7 @@ export default function App() {
       <Projects />
       <Hackathons />
       <Experience />
+      <Resume />
       <Certifications />
       <DinoGame />
       <Contact />

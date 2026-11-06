@@ -9,7 +9,7 @@ const allSkills = [
   { name: 'SQL', cat: 'Languages' },
   { name: 'TYPESCRIPT', cat: 'Languages' },
   { name: 'DART', cat: 'Languages' },
-  { name: 'GEMINI API', cat: 'AI / ML' },
+  { name: 'GEMINI', cat: 'AI / ML' },
   { name: 'LLM INTEGRATION', cat: 'AI / ML' },
   { name: 'PROMPT ENGINEERING', cat: 'AI / ML' },
   { name: 'WEB SPEECH API', cat: 'AI / ML' },
@@ -26,10 +26,13 @@ const allSkills = [
   { name: 'TAILWIND CSS', cat: 'Frameworks' },
   { name: 'FLUTTER', cat: 'Frameworks' },
   { name: 'LANGGRAPH', cat: 'Frameworks' },
-  { name: 'FIGMA', cat: 'Design' },
-  { name: 'CANVA', cat: 'Design' },
-  { name: 'ADOBE PHOTOSHOP', cat: 'Design' },
-  { name: 'ADOBE PRO', cat: 'Design' },
+  { name: 'HIGGSFIELD', cat: 'Editing' },
+  { name: 'CAPCUT', cat: 'Editing' },
+  { name: 'INSTAGRAM EDITS', cat: 'Editing' },
+  { name: 'CANVA', cat: 'Editing' },
+  { name: 'ADOBE PHOTOSHOP', cat: 'Editing' },
+  { name: 'ADOBE PREMIERE PRO', cat: 'Editing' },
+  { name: 'DAVINCI RESOLVE', cat: 'Editing' },
   { name: 'POSTGRESQL', cat: 'Tools' },
   { name: 'GITHUB', cat: 'Tools' },
   { name: 'NEO4J', cat: 'Tools' },
@@ -38,18 +41,17 @@ const allSkills = [
   { name: 'VERCEL', cat: 'Tools' },
   { name: 'MYSQL', cat: 'Tools' },
   { name: 'VS CODE', cat: 'Tools' },
+  { name: 'FIGMA', cat: 'Tools' },
 ]
 
-const CATS = ['ALL', 'Languages', 'AI / ML', 'Frameworks', 'Design', 'Tools']
-const colors = [
-  { background: '#CAED4C', color: '#0D0D0D' },
-  { background: '#E8341A', color: '#FFFFFF' },
-  { background: '#6D28D9', color: '#FFFFFF' },
-  { background: '#2DD4BF', color: '#0D0D0D' },
-  { background: '#FF8C42', color: '#0D0D0D' },
-  { background: '#1A1A1A', color: '#CAED4C' },
-  { background: '#C084FC', color: '#0D0D0D' },
-]
+const CATS = ['ALL', 'Languages', 'AI / ML', 'Frameworks', 'Editing', 'Tools']
+const categoryColors = {
+  Languages: { background: '#CAED4C', color: '#0D0D0D' },
+  'AI / ML': { background: '#C084FC', color: '#0D0D0D' },
+  Frameworks: { background: '#FF8C42', color: '#0D0D0D' },
+  Editing: { background: '#E8341A', color: '#FFFFFF' },
+  Tools: { background: '#F0EDE8', color: '#0D0D0D' },
+}
 
 export default function Skills() {
   const [active, setActive] = useState('ALL')
@@ -80,12 +82,14 @@ export default function Skills() {
         .filter-btn:hover { border-color: #CAED4C !important; color: #CAED4C !important; }
         .skill-list { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 0.85rem; min-height: 12rem; }
         .skill-capsule { display: inline-flex; align-items: center; min-height: 44px; padding: 0.65rem 1.15rem; border-radius: 100px; font-family: 'Space Mono', monospace; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.035em; box-shadow: 0 5px 16px rgba(0,0,0,0.2); white-space: nowrap; }
-        @keyframes skillCapsuleSettle {
-          0% { transform: translate(var(--start-x), var(--start-y)) rotate(var(--start-rotate)) scale(0.82); opacity: 0.45; }
-          48% { transform: translate(var(--middle-x), var(--middle-y)) rotate(var(--middle-rotate)) scale(1.06); opacity: 1; }
+        @keyframes skillCapsuleFloat {
+          0% { transform: translate(var(--start-x), var(--start-y)) rotate(var(--start-rotate)) scale(0.9); opacity: 0.55; }
+          28% { transform: translate(var(--float-x), var(--float-y)) rotate(var(--float-rotate)) scale(1.06); opacity: 1; }
+          58% { transform: translate(var(--middle-x), var(--middle-y)) rotate(var(--middle-rotate)) scale(0.98); }
+          82% { transform: translate(var(--settle-x), var(--settle-y)) rotate(var(--settle-rotate)) scale(1.02); }
           100% { transform: translate(0, 0) rotate(0) scale(1); opacity: 1; }
         }
-        .skill-capsule.animate { animation: skillCapsuleSettle 3.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+        .skill-capsule.animate { animation: skillCapsuleFloat 3.6s ease-in-out both; }
         @media (prefers-reduced-motion: reduce) { .skill-capsule.animate { animation: none; } }
       `}</style>
       <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#CAED4C', marginBottom: '0.8rem' }}>What I Work With</p>
@@ -113,11 +117,12 @@ export default function Skills() {
 
       <div className="skill-list" role="list" aria-label="Technology skills">
         {filtered.map((skill, index) => {
-          const color = colors[index % colors.length]
-          const offset = (index % 5) * 5 + 6
+          const color = categoryColors[skill.cat]
+          const offset = (index % 5) * 10 + 20
           const signedOffset = index % 2 === 0 ? offset : -offset
-          const yOffset = (index % 3) * 7 + 7
+          const yOffset = (index % 3) * 9 + 12
           const signedYOffset = index % 2 === 0 ? -yOffset : yOffset
+          const direction = index % 2 === 0 ? 1 : -1
           return (
           <div
             key={skill.name}
@@ -128,10 +133,16 @@ export default function Skills() {
               color: color.color,
               '--start-x': `${signedOffset}px`,
               '--start-y': `${signedYOffset}px`,
-              '--middle-x': `${-signedOffset / 2}px`,
-              '--middle-y': `${-signedYOffset / 2}px`,
+              '--float-x': `${-signedOffset * 0.7}px`,
+              '--float-y': `${signedYOffset * 0.8}px`,
+              '--float-rotate': `${direction * -7}deg`,
+              '--middle-x': `${signedOffset * 0.55}px`,
+              '--middle-y': `${-signedYOffset * 0.5}px`,
               '--start-rotate': `${index % 2 === 0 ? 5 : -5}deg`,
-              '--middle-rotate': `${index % 2 === 0 ? -2.5 : 2.5}deg`,
+              '--middle-rotate': `${direction * 3}deg`,
+              '--settle-x': `${-signedOffset * 0.2}px`,
+              '--settle-y': `${-signedYOffset * 0.2}px`,
+              '--settle-rotate': `${direction * -1.5}deg`,
             }}
           >
             {skill.name}

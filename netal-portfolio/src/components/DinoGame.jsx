@@ -9,9 +9,9 @@ const DINO_W = 44
 const DINO_H = 52
 const GRAVITY = 0.6
 const JUMP_V = -13
-const INITIAL_SPEED = 4
-const SPEED_INCREMENT = 0.0006
-const MAX_SPEED = 8
+const INITIAL_SPEED = 3
+const SPEED_INCREMENT = 0.0003
+const MAX_SPEED = 7
 
 // Obstacle shapes: { w, h, label, color, emoji }
 const OBSTACLE_TYPES = [
