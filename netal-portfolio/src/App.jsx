@@ -6,6 +6,7 @@ import Marquee from './components/Marquee'
 import About from './components/About'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
+import GithubActivity from './components/GithubActivity'
 import Hackathons from './components/Hackathons'
 import Experience from './components/Experience'
 import Resume from './components/Resume'
@@ -35,6 +36,7 @@ export default function App() {
       <About />
       <Skills />
       <Projects />
+      <GithubActivity />
       <Hackathons />
       <Experience />
       <Resume />

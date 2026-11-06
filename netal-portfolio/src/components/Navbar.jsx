@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const links = ['About', 'Skills', 'Projects', 'Hackathons', 'Experience', 'Resume', 'Certifications', 'Game', 'Contact']
+const links = ['About', 'Skills', 'Projects', 'GitHub', 'Hackathons', 'Experience', 'Resume', 'Certifications', 'Game', 'Contact']
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -23,18 +23,18 @@ export default function Navbar() {
       transition: 'all 0.4s',
     }}>
       <a href="#hero" style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 900, color: '#0D0D0D', textDecoration: 'none' }}>
-        NG<span style={{ color: '#E8341A' }}>.</span>
+        NG<span style={{ color: '#CAED4C' }}>.</span>
       </a>
       <ul style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', listStyle: 'none', margin: 0, padding: 0 }}>
         {links.map(l => (
           <li key={l}>
-            <a href={`#${l.toLowerCase()}`} style={{
+            <a href={`#${l === 'GitHub' ? 'github-activity' : l.toLowerCase()}`} style={{
               textDecoration: 'none', color: '#0D0D0D',
               fontSize: '0.82rem', fontWeight: 600,
               letterSpacing: '0.06em', textTransform: 'uppercase',
               position: 'relative',
             }}
-              onMouseEnter={e => e.target.style.color = '#E8341A'}
+              onMouseEnter={e => e.target.style.color = '#5B6F22'}
               onMouseLeave={e => e.target.style.color = '#0D0D0D'}
             >{l}</a>
           </li>

@@ -47,10 +47,10 @@ const allSkills = [
 const CATS = ['ALL', 'Languages', 'AI / ML', 'Frameworks', 'Editing', 'Tools']
 const categoryColors = {
   Languages: { background: '#CAED4C', color: '#0D0D0D' },
-  'AI / ML': { background: '#C084FC', color: '#0D0D0D' },
-  Frameworks: { background: '#FF8C42', color: '#0D0D0D' },
-  Editing: { background: '#E8341A', color: '#FFFFFF' },
-  Tools: { background: '#F0EDE8', color: '#0D0D0D' },
+  'AI / ML': { background: '#DCC8F2', color: '#0D0D0D' },
+  Frameworks: { background: '#273414', color: '#FFFFFF' },
+  Editing: { background: '#B9A1D4', color: '#0D0D0D' },
+  Tools: { background: '#0D0D0D', color: '#CAED4C', border: '1px solid #CAED4C' },
 }
 
 export default function Skills() {
@@ -106,8 +106,8 @@ export default function Skills() {
         {CATS.map(c => (
           <button key={c} className="filter-btn" aria-pressed={active === c} onClick={() => setActive(c)} style={{
             padding: '0.4rem 1.1rem', borderRadius: 100,
-            background: active === c ? '#E8341A' : 'transparent',
-            color: active === c ? '#fff' : 'rgba(255,255,255,0.55)',
+            background: active === c ? '#CAED4C' : 'transparent',
+            color: active === c ? '#0D0D0D' : 'rgba(255,255,255,0.55)',
             fontSize: '0.78rem', fontWeight: 700,
             letterSpacing: '0.06em', textTransform: 'uppercase',
             border: active === c ? 'none' : '1px solid rgba(255,255,255,0.15)',
@@ -131,6 +131,7 @@ export default function Skills() {
             style={{
               background: color.background,
               color: color.color,
+              border: color.border,
               '--start-x': `${signedOffset}px`,
               '--start-y': `${signedYOffset}px`,
               '--float-x': `${-signedOffset * 0.7}px`,
