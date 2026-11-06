@@ -400,13 +400,13 @@ export default function DinoGame() {
       `}</style>
 
       {/* Header */}
-      <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#CAED4C', marginBottom: '0.8rem' }}>Mini Game</p>
+      <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#CAED4C', marginBottom: '0.8rem' }}>Mark Your Visit</p>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1rem', marginBottom: '2.5rem' }}>
         <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2.2rem, 5vw, 3.5rem)', fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
           Debug Runner.
         </h2>
         <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.88rem', maxWidth: 280, lineHeight: 1.6 }}>
-          Help the dino dodge bugs, errors & crashes. <strong style={{ color: '#CAED4C' }}>Space / ↑ / tap</strong> to jump.
+          Play a quick round and leave your mark on the leaderboard. Help the dino dodge bugs, errors & crashes. <strong style={{ color: '#CAED4C' }}>Space / ↑ / tap</strong> to jump.
         </p>
       </div>
 
