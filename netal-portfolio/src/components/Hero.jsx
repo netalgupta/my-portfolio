@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 
-const words = ['Developer', 'AI Builder', 'Web Dev', 'Python Dev']
+const words = ['Developer', 'AI Builder', 'Full-Stack Dev', 'Python Dev', 'Problem Solver']
 
 export default function Hero() {
   const [wordIndex, setWordIndex] = useState(0)
