@@ -7,6 +7,8 @@ const allSkills = [
   { name: 'C', cat: 'Languages', size: 'sm', color: '#FAF7F2', text: '#0D0D0D', border: '1.5px solid #ddd' },
   { name: 'HTML/CSS', cat: 'Languages', size: 'md', color: '#E8341A', text: '#fff' },
   { name: 'SQL', cat: 'Languages', size: 'sm', color: '#FAF7F2', text: '#0D0D0D', border: '1.5px solid #ddd' },
+  { name: 'TYPESCRIPT', cat: 'Languages', size: 'sm', color: '#e8f5e9', text: '#2E7D32', border: '1.5px dashed #A5D6A7', learning: true },
+  { name: 'DART', cat: 'Languages', size: 'sm', color: '#e8f5e9', text: '#2E7D32', border: '1.5px dashed #A5D6A7', learning: true },
   { name: 'GEMINI API', cat: 'AI / ML', size: 'xl', color: '#E8341A', text: '#fff' },
   { name: 'LLM INTEGRATION', cat: 'AI / ML', size: 'lg', color: '#0D0D0D', text: '#fff' },
   { name: 'PROMPT ENGINEERING', cat: 'AI / ML', size: 'md', color: '#FAF7F2', text: '#0D0D0D', border: '1.5px solid #ddd' },
