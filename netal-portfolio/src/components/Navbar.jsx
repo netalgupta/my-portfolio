@@ -22,8 +22,8 @@ export default function Navbar() {
       borderBottom: scrolled ? '1px solid rgba(0,0,0,0.06)' : 'none',
       transition: 'all 0.4s',
     }}>
-      <a href="#hero" style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 900, color: '#0D0D0D', textDecoration: 'none' }}>
-        NG<span style={{ color: '#CAED4C' }}>.</span>
+      <a href="#hero" aria-label="Netal Gupta — home" style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
+        <img src="/logo.png" alt="Netal Gupta" style={{ display: 'block', width: 52, height: 38, objectFit: 'contain' }} />
       </a>
       <ul style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', listStyle: 'none', margin: 0, padding: 0 }}>
         {links.map(l => (
@@ -34,7 +34,7 @@ export default function Navbar() {
               letterSpacing: '0.06em', textTransform: 'uppercase',
               position: 'relative',
             }}
-              onMouseEnter={e => e.target.style.color = '#5B6F22'}
+              onMouseEnter={e => e.target.style.color = '#E8341A'}
               onMouseLeave={e => e.target.style.color = '#0D0D0D'}
             >{l}</a>
           </li>
