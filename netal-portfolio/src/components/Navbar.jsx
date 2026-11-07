@@ -23,7 +23,7 @@ export default function Navbar() {
       transition: 'all 0.4s',
     }}>
       <a href="#hero" aria-label="Netal Gupta — home" style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
-        <img src="/logo.png" alt="Netal Gupta" style={{ display: 'block', width: 52, height: 38, objectFit: 'contain' }} />
+        <img src="/logo.png" alt="Netal Gupta" style={{ display: 'block', width: 'clamp(96px, 10vw, 140px)', height: 'clamp(68px, 7vw, 96px)', objectFit: 'contain' }} />
       </a>
       <ul style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', listStyle: 'none', margin: 0, padding: 0 }}>
         {links.map(l => (

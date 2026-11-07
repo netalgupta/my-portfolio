@@ -14,7 +14,9 @@ function Carousel({ images, placeholderCount = 0 }) {
         .carousel-img { animation: fadeSlide 0.4s ease; }
       `}</style>
       {all[idx] ? (
-        <img key={idx} src={all[idx]} className="carousel-img" alt={`screenshot ${idx + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+        <a href={all[idx]} target="_blank" rel="noreferrer" aria-label={`Open screenshot ${idx + 1} at full size in a new tab`} style={{ display: 'block', width: '100%', height: '100%' }}>
+          <img key={idx} src={all[idx]} className="carousel-img" alt={`Project screenshot ${idx + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', cursor: 'zoom-in' }} />
+        </a>
       ) : (
         <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#1a1a1a', color: 'rgba(255,255,255,0.2)', gap: 8 }}>
           <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.12em' }}>PROJECT PREVIEW</div>
