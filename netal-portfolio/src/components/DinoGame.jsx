@@ -152,15 +152,36 @@ function drawCloud(ctx, x, y) {
 
 // ─── Leaderboard storage ────────────────────────────────────────────────────
 const LB_KEY = 'dino_leaderboard_v1'
-function getLeaderboard() {
-  try { return JSON.parse(localStorage.getItem(LB_KEY)) || [] } catch { return [] }
+const PLAYS_KEY = 'dino_plays_v1'
+function getSavedScores() {
+  const stored = JSON.parse(localStorage.getItem(LB_KEY) || '[]')
+  if (!Array.isArray(stored)) throw new Error('Stored leaderboard is not a list')
+  return stored
+    .filter(entry => entry && typeof entry.name === 'string' && Number.isFinite(entry.score) && typeof entry.date === 'string')
+    .sort((a, b) => b.score - a.score)
 }
-function saveScore(name, score) {
+function getLeaderboard() {
+  return getSavedScores().slice(0, 5)
+}
+function saveScore(name, score, id) {
   const lb = getLeaderboard()
-  lb.push({ name: name || 'Anonymous', score, date: new Date().toLocaleDateString('en-IN') })
+  lb.push({ id, name: name || 'Anonymous', score, date: new Date().toLocaleDateString('en-IN') })
   lb.sort((a, b) => b.score - a.score)
-  localStorage.setItem(LB_KEY, JSON.stringify(lb.slice(0, 20)))
-  return lb.slice(0, 10)
+  const topFive = lb.slice(0, 5)
+  localStorage.setItem(LB_KEY, JSON.stringify(topFive))
+  return topFive
+}
+function updateScoreName(id, name) {
+  const lb = getLeaderboard().map(entry => entry.id === id ? { ...entry, name } : entry)
+  localStorage.setItem(LB_KEY, JSON.stringify(lb))
+  return lb
+}
+function recordPlay() {
+  const storedCount = Number(localStorage.getItem(PLAYS_KEY) || 0)
+  if (!Number.isSafeInteger(storedCount) || storedCount < 0) throw new Error('Stored play count is invalid')
+  const nextCount = storedCount + 1
+  localStorage.setItem(PLAYS_KEY, String(nextCount))
+  return nextCount
 }
 
 // ─── Main Component ─────────────────────────────────────────────────────────
@@ -168,13 +189,33 @@ export default function DinoGame() {
   const canvasRef = useRef(null)
   const stateRef = useRef(null)
   const rafRef = useRef(null)
+  const latestScoreIdRef = useRef(null)
   const [phase, setPhase] = useState('idle')   // idle | playing | dead | leaderboard
   const [score, setScore] = useState(0)
   const [hiscore, setHiscore] = useState(0)
   const [leaderboard, setLeaderboard] = useState([])
+  const [playedCount, setPlayedCount] = useState(0)
+  const [storageError, setStorageError] = useState('')
   const [playerName, setPlayerName] = useState('')
   const [nameInput, setNameInput] = useState('')
   const [submitted, setSubmitted] = useState(false)
+
+  useEffect(() => {
+    try {
+      const savedScores = getSavedScores()
+      const savedLeaderboard = savedScores.slice(0, 5)
+      const storedCount = Number(localStorage.getItem(PLAYS_KEY) || 0)
+      if (!Number.isSafeInteger(storedCount) || storedCount < 0) throw new Error('Stored play count is invalid')
+      const knownPlays = Math.max(storedCount, savedScores.length)
+      if (knownPlays !== storedCount) localStorage.setItem(PLAYS_KEY, String(knownPlays))
+      setLeaderboard(savedLeaderboard)
+      setPlayedCount(knownPlays)
+      setHiscore(savedLeaderboard[0]?.score || 0)
+    } catch (error) {
+      console.error('Unable to load saved game activity:', error)
+      setStorageError('Game activity could not be loaded or saved in this browser.')
+    }
+  }, [])
 
   // Init game state
   const initState = useCallback(() => ({
@@ -221,6 +262,14 @@ export default function DinoGame() {
     setScore(0)
     setSubmitted(false)
     setPlayerName('')
+    latestScoreIdRef.current = null
+    try {
+      setPlayedCount(recordPlay())
+      setStorageError('')
+    } catch (error) {
+      console.error('Unable to save the game play count:', error)
+      setStorageError('This browser could not save game activity. Check its local storage settings.')
+    }
     setPhase('playing')
   }, [initState])
 
@@ -283,10 +332,17 @@ export default function DinoGame() {
         if (hit) {
           s.isDead = true
           const finalScore = Math.round(s.score * 10)
-          const lb = saveScore(null, finalScore) // temp save as anon, will update on name submit
+          const scoreId = `${Date.now()}-${Math.random().toString(36).slice(2)}`
+          latestScoreIdRef.current = scoreId
           setScore(finalScore)
           setHiscore(prev => Math.max(prev, finalScore))
-          setLeaderboard(lb)
+          try {
+            setLeaderboard(saveScore('Anonymous', finalScore, scoreId))
+            setStorageError('')
+          } catch (error) {
+            console.error('Unable to save the game score:', error)
+            setStorageError('This browser could not save your score. Check its local storage settings.')
+          }
           setPhase('dead')
           // Draw dead frame
           drawFrame(ctx, s)
@@ -347,12 +403,13 @@ export default function DinoGame() {
   const handleSubmit = () => {
     const name = nameInput.trim() || 'Anonymous'
     setPlayerName(name)
-    // Update last entry
-    const lb = getLeaderboard()
-    if (lb.length > 0) lb[0].name = name
-    lb.sort((a, b) => b.score - a.score)
-    localStorage.setItem(LB_KEY, JSON.stringify(lb.slice(0, 20)))
-    setLeaderboard(lb.slice(0, 10))
+    try {
+      setLeaderboard(updateScoreName(latestScoreIdRef.current, name))
+      setStorageError('')
+    } catch (error) {
+      console.error('Unable to update the saved game score name:', error)
+      setStorageError('This browser could not update your saved score. Check its local storage settings.')
+    }
     setSubmitted(true)
     setPhase('leaderboard')
   }
@@ -411,6 +468,17 @@ export default function DinoGame() {
           Play a quick round and leave your mark on the leaderboard. Help the dino dodge bugs, errors & crashes. <strong style={{ color: '#CAED4C' }}>Space / ↑ / tap</strong> to jump.
         </p>
       </div>
+      <div style={{ maxWidth: W, margin: '-1rem auto 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem', flexWrap: 'wrap' }}>
+        <span style={{ color: '#CAED4C', fontFamily: "'Space Mono', monospace", fontSize: '0.9rem', fontWeight: 700 }}>
+          {playedCount.toLocaleString()} {playedCount === 1 ? 'play' : 'plays'} on this browser
+        </span>
+        <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem' }}>Activity and scores are saved on this device only.</span>
+      </div>
+      {storageError && (
+        <p role="status" style={{ maxWidth: W, margin: '0 auto 1rem', color: '#FF8C42', fontSize: '0.82rem' }}>
+          {storageError}
+        </p>
+      )}
 
       {/* Score bar */}
       {phase === 'playing' && (
@@ -493,19 +561,24 @@ export default function DinoGame() {
       )}
 
       {/* Leaderboard */}
-      {phase === 'leaderboard' && (
-        <div style={{ maxWidth: W, margin: '2rem auto 0', background: 'rgba(255,255,255,0.04)', borderRadius: 20, border: '1px solid rgba(255,255,255,0.08)', overflow: 'hidden' }}>
+      <div style={{ maxWidth: W, margin: '2rem auto 0', background: 'rgba(255,255,255,0.04)', borderRadius: 20, border: '1px solid rgba(255,255,255,0.08)', overflow: 'hidden' }}>
           <div style={{ padding: '1.6rem 2rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
             <div>
-              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.3rem', fontWeight: 700 }}>Leaderboard</h3>
+              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.3rem', fontWeight: 700 }}>Top 5 Scores on This Browser</h3>
               <p style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.4)', marginTop: '0.2rem' }}>
-                Your score: <strong style={{ color: '#CAED4C' }}>{score.toString().padStart(5, '0')}</strong>
-                {playerName && <span> · Saved as <strong style={{ color: '#CAED4C' }}>{playerName}</strong></span>}
+                {phase === 'leaderboard' && (
+                  <>
+                    Your score: <strong style={{ color: '#CAED4C' }}>{score.toString().padStart(5, '0')}</strong>
+                    {playerName && <span> · Saved as <strong style={{ color: '#CAED4C' }}>{playerName}</strong></span>}
+                  </>
+                )}
               </p>
             </div>
-            <button className="dino-btn dino-btn-primary" onClick={startGame} style={{ fontSize: '0.82rem', padding: '0.6rem 1.4rem' }}>
-              Play Again
-            </button>
+            {phase === 'leaderboard' && (
+              <button className="dino-btn dino-btn-primary" onClick={startGame} style={{ fontSize: '0.82rem', padding: '0.6rem 1.4rem' }}>
+                Play Again
+              </button>
+            )}
           </div>
 
           {leaderboard.length === 0 ? (
@@ -514,7 +587,7 @@ export default function DinoGame() {
             </div>
           ) : (
             leaderboard.map((entry, i) => (
-              <div key={i} className="lb-row" style={{
+              <div key={entry.id || `${entry.name}-${entry.score}-${entry.date}-${i}`} className="lb-row" style={{
                 display: 'flex', alignItems: 'center', gap: '1rem',
                 padding: '0.9rem 2rem',
                 borderBottom: i < leaderboard.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
@@ -535,8 +608,7 @@ export default function DinoGame() {
               </div>
             ))
           )}
-        </div>
-      )}
+      </div>
 
       {/* Obstacle legend */}
       <div style={{ maxWidth: W, margin: '1.5rem auto 0', display: 'flex', gap: '0.8rem', flexWrap: 'wrap' }}>
