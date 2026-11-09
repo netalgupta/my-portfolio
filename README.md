@@ -37,7 +37,7 @@ npm run build
 
 ## 🌐 Live
 
-Deployed at: [netalgupta.vercel.app](https://netalgupta.vercel.app)
+Deployed at: [Portfolio](netalportfolio.xyz)
 
 ## 📬 Contact
 
