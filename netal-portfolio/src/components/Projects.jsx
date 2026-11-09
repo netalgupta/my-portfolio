@@ -163,7 +163,7 @@ export default function Projects() {
         ]}
         appLink={null}
         ghLink="https://github.com/Aryan-lomte05/Varuna"
-        carouselImages={['/varuna1.png']}
+        carouselImages={['/varuna1.png', '/varuna2.png', '/varuna3.png', '/varuna4.png', '/varuna5.png']}
         placeholderCount={0}
         accentColor="#0D0D0D"
         avatar={{ mark: 'VR', bg: '#E0F7FA' }}
