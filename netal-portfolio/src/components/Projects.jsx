@@ -142,7 +142,7 @@ export default function Projects() {
           '700+ passing tests, 15/15 PS requirements covered, 95/98 functional checks passed; adversarial approval gate 6/6 denied (token reuse, payload swap, expiry)',
         ]}
         appLink={null}
-        ghLink="https://github.com/Aryan-lomte05/SIH26117-Sovereign-Workbench"
+        ghLink="https://github.com/netalgupta/Sovereign-AI-Workbench"
         carouselImages={['/souv1.png', '/souv2.png', '/souv3.png']}
         placeholderCount={0}
         accentColor="#6D28D9"
@@ -162,7 +162,7 @@ export default function Projects() {
           'Generalized the biodiversity analytics dataset schema for scalable cross-species reporting, and built the proactive anomaly/early-warning alert center surfacing marine heatwave and hypoxia alerts',
         ]}
         appLink={null}
-        ghLink="https://github.com/Aryan-lomte05/Varuna"
+        ghLink="https://github.com/netalgupta/VARUNA"
         carouselImages={['/varuna1.png', '/varuna2.png', '/varuna3.png', '/varuna4.png', '/varuna5.png']}
         placeholderCount={0}
         accentColor="#0D0D0D"
