@@ -53,10 +53,10 @@ function Carousel({ images, placeholderCount = 0 }) {
 }
 
 const projectMarks = [
-  { mark: 'SC', bg: '#FFE4E1', label: 'SaathiCare' },
-  { mark: 'CP', bg: '#F0FFF0', label: 'CP Tracker' },
+  { image: '/saathicarelogo.png', bg: '#FFE4E1', label: 'SaathiCare' },
+  { image: '/cptrackerlogo.png', bg: '#F0FFF0', label: 'CP Tracker' },
   { mark: 'VR', bg: '#E0F7FA', label: 'VARUNA' },
-  { mark: 'AI', bg: '#F3E8FF', label: 'SIH Workbench' },
+  { image: '/souvlogo.png', bg: '#F3E8FF', label: 'SIH Workbench' },
 ]
 
 function ProjectCard({ num, badge, badgeBg, title, date, stack, bullets, appLink, ghLink, carouselImages, placeholderCount = 2, accentColor, avatar }) {
