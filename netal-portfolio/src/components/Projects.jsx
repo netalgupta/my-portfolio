@@ -76,7 +76,9 @@ function ProjectCard({ num, badge, badgeBg, title, date, stack, bullets, appLink
         >
           {/* Avatar deco */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1rem' }}>
-            <div style={{ width: 52, height: 52, borderRadius: 16, background: avatar.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.04em', flexShrink: 0 }}>{avatar.mark}</div>
+            <div style={{ width: 52, height: 52, borderRadius: 16, background: avatar.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.04em', flexShrink: 0, overflow: 'hidden' }}>
+              {avatar.image ? <img src={avatar.image} alt={`${title} logo`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : avatar.mark}
+            </div>
             <span style={{ background: badgeBg, color: badgeBg === '#0D0D0D' ? '#CAED4C' : '#fff', fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.3rem 0.9rem', borderRadius: 100 }}>{badge}</span>
           </div>
           <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.7rem', fontWeight: 700, marginBottom: '0.3rem', lineHeight: 1.2 }}>{title}</h3>
@@ -166,7 +168,7 @@ export default function Projects() {
         carouselImages={['/varuna1.png', '/varuna2.png', '/varuna3.png', '/varuna4.png', '/varuna5.png']}
         placeholderCount={0}
         accentColor="#0D0D0D"
-        avatar={{ mark: 'VR', bg: '#E0F7FA' }}
+        avatar={{ image: '/varunalogo.png', bg: '#E0F7FA' }}
       />
 
       <ProjectCard
