@@ -150,54 +150,31 @@ function drawCloud(ctx, x, y) {
   ctx.restore()
 }
 
-async function requestGameApi(action, payload) {
-  const response = await fetch('/api/dino', {
-    method: action ? 'POST' : 'GET',
-    headers: action ? { 'Content-Type': 'application/json' } : undefined,
-    body: action ? JSON.stringify({ action, ...payload }) : undefined,
-  })
-  const result = await response.json()
-  if (!response.ok) throw new Error(result.error || 'The shared game service returned an error.')
-  return result
-}
-
-function formatScoreDate(date) {
-  const parsedDate = new Date(date)
-  return Number.isNaN(parsedDate.getTime()) ? '' : parsedDate.toLocaleDateString('en-IN')
-}
+const PERSONAL_BEST_KEY = 'dinoGamePersonalBest'
 
 // ─── Main Component ─────────────────────────────────────────────────────────
 export default function DinoGame() {
   const canvasRef = useRef(null)
   const stateRef = useRef(null)
   const rafRef = useRef(null)
-  const [phase, setPhase] = useState('idle')   // idle | playing | dead | leaderboard
+  const [phase, setPhase] = useState('idle')   // idle | playing | dead
   const [score, setScore] = useState(0)
   const [hiscore, setHiscore] = useState(0)
-  const [leaderboard, setLeaderboard] = useState([])
-  const [playedCount, setPlayedCount] = useState(0)
   const [storageError, setStorageError] = useState('')
-  const [playerName, setPlayerName] = useState('')
-  const [nameInput, setNameInput] = useState('')
-  const [submitting, setSubmitting] = useState(false)
 
   useEffect(() => {
-    let isMounted = true
-
-    requestGameApi()
-      .then(stats => {
-        if (!isMounted) return
-        setLeaderboard(stats.leaderboard)
-        setPlayedCount(stats.plays)
-        setHiscore(stats.leaderboard[0]?.score || 0)
-      })
-      .catch(error => {
-        if (!isMounted) return
-        console.error('Unable to load shared game activity:', error)
-        setStorageError('Shared game activity could not be loaded. Please try again later.')
-      })
-
-    return () => { isMounted = false }
+    try {
+      const savedBest = window.localStorage.getItem(PERSONAL_BEST_KEY)
+      if (savedBest !== null) {
+        const parsedBest = Number(savedBest)
+        if (Number.isSafeInteger(parsedBest) && parsedBest >= 0) {
+          setHiscore(parsedBest)
+        }
+      }
+    } catch (error) {
+      console.error('Unable to load the personal game score:', error)
+      setStorageError('Your personal best could not be loaded from this browser.')
+    }
   }, [])
 
   // Init game state
@@ -244,16 +221,7 @@ export default function DinoGame() {
     if (stateRef.current && !stateRef.current.isDead) return
     stateRef.current = initState()
     setScore(0)
-    setPlayerName('')
-    requestGameApi('play')
-      .then(({ plays }) => {
-        setPlayedCount(plays)
-        setStorageError('')
-      })
-      .catch(error => {
-        console.error('Unable to record the game play:', error)
-        setStorageError('This play could not be recorded. The shared stats service may be unavailable.')
-      })
+    setStorageError('')
     setPhase('playing')
   }, [initState])
 
@@ -317,6 +285,15 @@ export default function DinoGame() {
           s.isDead = true
           const finalScore = Math.round(s.score * 10)
           setScore(finalScore)
+          if (finalScore > hiscore) {
+            setHiscore(finalScore)
+            try {
+              window.localStorage.setItem(PERSONAL_BEST_KEY, String(finalScore))
+            } catch (error) {
+              console.error('Unable to save the personal game score:', error)
+              setStorageError('Your personal best could not be saved in this browser.')
+            }
+          }
           setPhase('dead')
           // Draw dead frame
           drawFrame(ctx, s)
@@ -373,34 +350,10 @@ export default function DinoGame() {
     ctx.restore()
   }
 
-  const submitScore = async (player) => {
-    if (submitting) return
-    const name = player.trim() || 'Anonymous'
-    setSubmitting(true)
-    setStorageError('')
-    try {
-      const { leaderboard: updatedLeaderboard } = await requestGameApi('score', { name, score })
-      setLeaderboard(updatedLeaderboard)
-      setHiscore(updatedLeaderboard[0]?.score || 0)
-      setPlayerName(name)
-      setPhase('leaderboard')
-    } catch (error) {
-      console.error('Unable to save the game score:', error)
-      setStorageError('Your score could not be saved to the shared leaderboard. Please try again.')
-    } finally {
-      setSubmitting(false)
-    }
-  }
-
-  const handleSubmit = () => submitScore(nameInput)
-  const handleAnon = () => submitScore('Anonymous')
-
   // Tap/click to jump
   const handleCanvasClick = () => {
     if (phase === 'playing') jump()
   }
-
-  const medals = ['1', '2', '3']
 
   return (
     <section id="game" style={{ padding: '7rem 4rem', background: '#121212', color: '#fff', position: 'relative', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
@@ -409,8 +362,6 @@ export default function DinoGame() {
         #game canvas { border-radius: 20px; display: block; width: 100%; max-width: ${W}px; cursor: pointer; }
         #game .game-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 20px; }
         #game .game-dead-panel { max-width: ${W}px; margin: 1.25rem auto 0; padding: 1.5rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.8rem; }
-        #game .game-dead-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.6rem; }
-        #game .lb-row:nth-child(even) { background: rgba(255,255,255,0.03); }
         @media (max-width: 860px) { #game { padding: 5rem 1.5rem; } }
         @media (max-width: 540px) { #game { padding: 4rem 1rem; } }
         .dino-btn {
@@ -423,14 +374,6 @@ export default function DinoGame() {
         .dino-btn:hover { transform: scale(1.05); opacity: 0.92; }
         .dino-btn-primary { background: #CAED4C; color: #0D0D0D; }
         .dino-btn-secondary { background: rgba(255,255,255,0.1); color: #fff; border: 1.5px solid rgba(255,255,255,0.2); }
-        .name-input {
-          background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.2);
-          color: #fff; border-radius: 100px; padding: 0.65rem 1.4rem;
-          font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; outline: none;
-          width: 220px; text-align: center; transition: border-color 0.2s;
-        }
-        .name-input::placeholder { color: rgba(255,255,255,0.3); }
-        .name-input:focus { border-color: #CAED4C; }
       `}</style>
 
       {/* Header */}
@@ -440,14 +383,14 @@ export default function DinoGame() {
           Debug Runner.
         </h2>
         <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.88rem', maxWidth: 280, lineHeight: 1.6 }}>
-          Play a quick round and leave your mark on the leaderboard. Help the dino dodge bugs, errors & crashes. <strong style={{ color: '#CAED4C' }}>Space / ↑ / tap</strong> to jump.
+          Play a quick round and beat your personal best. Help the dino dodge bugs, errors & crashes. <strong style={{ color: '#CAED4C' }}>Space / ↑ / tap</strong> to jump.
         </p>
       </div>
       <div style={{ maxWidth: W, margin: '-1rem auto 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem', flexWrap: 'wrap' }}>
         <span style={{ color: '#CAED4C', fontFamily: "'Space Mono', monospace", fontSize: '0.9rem', fontWeight: 700 }}>
-          {playedCount.toLocaleString()} {playedCount === 1 ? 'play' : 'plays'} across all visitors
+          Personal best: {hiscore.toString().padStart(5, '0')}
         </span>
-        <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem' }}>Shared stats from everyone who has played.</span>
+        <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem' }}>Your best is saved only in this browser.</span>
       </div>
       {storageError && (
         <p role="status" style={{ maxWidth: W, margin: '0 auto 1rem', color: '#FF8C42', fontSize: '0.82rem' }}>
@@ -498,7 +441,7 @@ export default function DinoGame() {
       </div>
 
       {phase === 'dead' && (
-        <div className="game-dead-panel" role="group" aria-label="Final score and leaderboard options">
+        <div className="game-dead-panel" role="group" aria-label="Final score">
             <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.4rem', fontWeight: 900, marginBottom: '0.3rem', color: '#E8341A' }}>
               Crashed!
             </h3>
@@ -508,82 +451,15 @@ export default function DinoGame() {
             <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '2.2rem', fontWeight: 700, color: '#CAED4C' }}>
               {score.toString().padStart(5, '0')}
             </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
-              <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.6)' }}>Save your score to the leaderboard:</p>
-              <input
-                className="name-input"
-                placeholder="Your name (optional)"
-                value={nameInput}
-                onChange={e => setNameInput(e.target.value)}
-                onKeyDown={e => e.key === 'Enter' && handleSubmit()}
-                maxLength={20}
-              />
-              <div className="game-dead-actions">
-                <button className="dino-btn dino-btn-primary" onClick={handleSubmit} disabled={submitting} style={{ fontSize: '0.82rem', padding: '0.6rem 1.4rem' }}>
-                  {submitting ? 'Saving…' : 'Save Score'}
-                </button>
-                <button className="dino-btn dino-btn-secondary" onClick={handleAnon} disabled={submitting} style={{ fontSize: '0.82rem', padding: '0.6rem 1.2rem' }}>
-                  Anonymous
-                </button>
-              </div>
-            </div>
+            <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.6)' }}>
+              Personal best: <strong style={{ color: '#CAED4C' }}>{hiscore.toString().padStart(5, '0')}</strong>
+            </p>
 
             <button className="dino-btn dino-btn-secondary" onClick={startGame} style={{ fontSize: '0.82rem' }}>
-              Try Again
+              Play Again
             </button>
         </div>
       )}
-
-      {/* Leaderboard */}
-      <div style={{ maxWidth: W, margin: '2rem auto 0', background: 'rgba(255,255,255,0.04)', borderRadius: 20, border: '1px solid rgba(255,255,255,0.08)', overflow: 'hidden' }}>
-          <div style={{ padding: '1.6rem 2rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-            <div>
-              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.3rem', fontWeight: 700 }}>Global Top 5</h3>
-              <p style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.4)', marginTop: '0.2rem' }}>
-                {phase === 'leaderboard' && (
-                  <>
-                    Your score: <strong style={{ color: '#CAED4C' }}>{score.toString().padStart(5, '0')}</strong>
-                    {playerName && <span> · Saved as <strong style={{ color: '#CAED4C' }}>{playerName}</strong></span>}
-                  </>
-                )}
-              </p>
-            </div>
-            {phase === 'leaderboard' && (
-              <button className="dino-btn dino-btn-primary" onClick={startGame} style={{ fontSize: '0.82rem', padding: '0.6rem 1.4rem' }}>
-                Play Again
-              </button>
-            )}
-          </div>
-
-          {leaderboard.length === 0 ? (
-            <div style={{ padding: '2rem', textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontSize: '0.88rem' }}>
-              No scores yet. Be the first to set one.
-            </div>
-          ) : (
-            leaderboard.map((entry, i) => (
-              <div key={entry.id || `${entry.name}-${entry.score}-${entry.date}-${i}`} className="lb-row" style={{
-                display: 'flex', alignItems: 'center', gap: '1rem',
-                padding: '0.9rem 2rem',
-                borderBottom: i < leaderboard.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
-                background: entry.name === playerName && i === 0 ? 'rgba(202,237,76,0.06)' : undefined,
-              }}>
-                <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '1.1rem', width: 30, textAlign: 'center' }}>
-                  {medals[i] || `${i + 1}.`}
-                </span>
-                <span style={{ flex: 1, fontSize: '0.92rem', fontWeight: 600, color: entry.name === playerName && i === 0 ? '#CAED4C' : '#fff' }}>
-                  {entry.name}
-                </span>
-                <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.95rem', color: '#CAED4C', fontWeight: 700 }}>
-                  {entry.score.toString().padStart(5, '0')}
-                </span>
-                <span style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.3)', minWidth: 70, textAlign: 'right' }}>
-                  {formatScoreDate(entry.date)}
-                </span>
-              </div>
-            ))
-          )}
-      </div>
 
       {/* Obstacle legend */}
       <div style={{ maxWidth: W, margin: '1.5rem auto 0', display: 'flex', gap: '0.8rem', flexWrap: 'wrap' }}>
@@ -594,7 +470,7 @@ export default function DinoGame() {
           </div>
         ))}
         <div style={{ marginLeft: 'auto', fontSize: '0.72rem', color: 'rgba(255,255,255,0.25)', alignSelf: 'center' }}>
-          Scores shared with everyone who plays
+          Personal scores stay in this browser
         </div>
       </div>
     </section>
