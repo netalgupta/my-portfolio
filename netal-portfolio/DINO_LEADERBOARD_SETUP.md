@@ -1,6 +1,6 @@
 # Shared Dino leaderboard setup
 
-The leaderboard and play count use a Vercel API route backed by Firebase Realtime Database. Firebase Admin credentials are used only by the API and must never be added to client-side `VITE_` variables.
+The leaderboard and play count use a Vercel API route backed by Firebase Realtime Database. The root-level `api/dino.js` entry forwards requests to the handler in `netal-portfolio/api/dino.js`, so Vercel can detect the function while building the repository-root workspace. Firebase Admin credentials are used only by the API and must never be added to client-side `VITE_` variables.
 
 ## Configure Firebase
 
