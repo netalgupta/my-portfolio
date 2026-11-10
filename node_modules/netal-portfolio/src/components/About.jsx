@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 
 const stats = [
-  { num: 10, label: 'Sem-4', decimal: true },
+  { num: 10, label: 'Latest Semester Pointer', decimal: true },
   { num: 9.1, label: 'CGPA', decimal: true },
 ]
 

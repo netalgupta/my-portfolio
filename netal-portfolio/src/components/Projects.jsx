@@ -204,7 +204,6 @@ export default function Projects() {
           'Interactive AI chatbot for follow-up questions on submitted solutions',
           'Real-time leaderboard with Google Auth for onboarding and persistent sessions',
         ]}
-        appLink="https://cptracker-gdg.vercel.app/"
         ghLink="https://github.com/netalgupta/All-In_CodeEvaluator_GDG"
         carouselImages={['/cplp.png','/cp1.png', '/cp2.png', '/cp3.png', '/cp4.png']}
         placeholderCount={0}

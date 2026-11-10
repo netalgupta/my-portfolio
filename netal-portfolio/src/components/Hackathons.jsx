@@ -1,5 +1,5 @@
 const hacks = [
-  { name: 'Indradhanu — International Grand Challenge', result: 'Round 1 cleared · Round 2 in January', project: 'Global challenge participation', bg: '#0D0D0D', text: '#fff', accent: '#CAED4C' },
+  { name: 'Indradhanu — International Grand Challenge', result: 'Round 1 cleared', project: 'Global challenge participation', bg: '#0D0D0D', text: '#fff', accent: '#CAED4C' },
   { name: 'Smart India Hackathon 2026 (Internal Round)', result: 'Ranked 2nd out of ~150 teams', project: 'VARUNA', bg: '#6D28D9', text: '#fff', accent: '#CAED4C' },
   { name: 'AfterMath Hackathon', result: 'Top 12 finalist of 36/250+ teams', project: 'SaathiCare', bg: '#DCC8F2', text: '#0D0D0D', accent: '#6D28D9' },
   { name: 'GDG Hackathon', result: 'Top 6', project: 'AI Competitive Programming Tracker', bg: '#FF8C42', text: '#fff', accent: '#fff' },
