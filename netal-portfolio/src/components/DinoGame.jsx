@@ -469,9 +469,6 @@ export default function DinoGame() {
             <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'rgba(255,255,255,0.5)', fontFamily: "'Space Mono', monospace" }}>{o.label}</span>
           </div>
         ))}
-        <div style={{ marginLeft: 'auto', fontSize: '0.72rem', color: 'rgba(255,255,255,0.25)', alignSelf: 'center' }}>
-          Personal scores stay in this browser
-        </div>
       </div>
     </section>
   )
